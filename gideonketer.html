@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gideon Keter — Lead Systems Architect & Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-glow: rgba(37, 99, 235, 0.35);
+            --accent: #22d3ee;
+            --accent-glow: rgba(34, 211, 238, 0.25);
+            --bg: #020617;
+            --surface: rgba(15, 23, 42, 0.65);
+            --surface-hover: rgba(30, 41, 59, 0.85);
+            --text: #f8fafc;
+            --dim: #94a3b8;
+            --stroke: rgba(148, 163, 184, 0.14);
+            --stroke-bright: rgba(34, 211, 238, 0.4);
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Cyber Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: 
+                radial-gradient(850px 650px at 15% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+                radial-gradient(750px 550px at 85% 20%, rgba(34, 211, 238, 0.16), transparent 65%),
+                radial-gradient(600px 600px at 50% 85%, rgba(15, 23, 42, 0.85), transparent 80%);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 80%);
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Glass Floating Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            filter: drop-shadow(0 0 10px var(--primary-glow));
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dim);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .btn-nav {
+            padding: 8px 18px;
+            border-radius: 8px;
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid var(--stroke-bright);
+            color: var(--accent) !important;
+            font-family: var(--font-mono);
+            font-size: 0.75rem !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
+        }
+
+        .btn-nav:hover {
+            background: var(--primary);
+            color: #fff !important;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 90px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--stroke-bright);
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.08;
+            margin-bottom: 24px;
+            max-width: 920px;
+        }
+
+        h1 span {
+            background: linear-gradient(120deg, #60a5fa 10%, #22d3ee 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--dim);
+            max-width: 680px;
+            margin-bottom: 40px;
+        }
+
+        .hero-desc strong {
+            color: var(--text);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 14px 28px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 0 25px var(--primary-glow);
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            padding: 14px 28px;
+            border-radius: 12px;
+            background: var(--surface);
+            border: 1px solid var(--stroke);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            backdrop-filter: blur(12px);
+            transition: all 0.25s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--stroke-bright);
+            background: var(--surface-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 90px 0;
+            border-top: 1px solid var(--stroke);
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        /* Glass Cards */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .glass-card {
+            padding: 32px;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--stroke);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            border-color: var(--stroke-bright);
+            transform: translateY(-4px);
+            background: var(--surface-hover);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+
+        .card-num {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .glass-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+        }
+
+        .glass-card p {
+            color: var(--dim);
+            font-size: 0.94rem;
+            line-height: 1.65;
+        }
+
+        /* Systems Detail Cards */
+        .system-card {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 32px;
+            padding: 36px;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--stroke);
+            border-radius: 24px;
+            margin-top: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .system-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--stroke);
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: rgba(2, 6, 23, 0.7);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--stroke);
+        }
+
+        .highlight-box h4 {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            margin-bottom: 14px;
+        }
+
+        .highlight-list {
+            list-style: none;
+        }
+
+        .highlight-list li {
+            font-size: 0.88rem;
+            color: var(--text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .highlight-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--stroke);
+            text-align: center;
+            color: var(--dim);
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+        }
+
+        @media (max-width: 860px) {
+            .system-card { grid-template-columns: 1fr; padding: 24px; }
+            .nav-links { display: none; }
+            .hero { padding-top: 130px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+                        <rect width="512" height="512" rx="140" fill="#2563EB"/>
+                        <path d="M256 120C180 120 120 175 120 248C120 295 146 335 186 358L174 416L234 388C241 390 248 391 256 391C332 391 392 336 392 263C392 190 332 120 256 120Z" fill="white"/>
+                        <path d="M190 295C227 258 285 258 322 295" stroke="#2563EB" stroke-width="26" stroke-linecap="round"/>
+                        <path d="M216 256C238 234 274 234 296 256" stroke="#2563EB" stroke-width="26" stroke-linecap="round"/>
+                        <circle cx="256" cy="326" r="16" fill="#2563EB"/>
+                    </svg>
+                </div>
+                <span>Gideon Keter</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#company">Kilbeans Ltd</a></li>
+                <li><a href="#systems">Systems Portfolio</a></li>
+                <li><a href="#architecture">Stack</a></li>
+                <li><a href="https://kilbeans.me/profile/Gideon%20Keter" target="_blank" class="btn-nav">@Gideon Keter ↗</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="wrap">
+        
+        <!-- Hero Section -->
+        <header class="hero" id="about">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Founder & Lead Architect @ Kilbeans Ltd
+            </div>
+            <h1>
+                Architecting <span>mobile platforms, ISP networks,</span> and real-time cloud systems.
+            </h1>
+            <p class="hero-desc">
+                I am <strong>Gideon Keter</strong> — a systems engineer building scalable cross-platform mobile software, real-time backend infrastructure, and automated ISP bandwidth billing gateways.
+            </p>
+            <div class="cta-group">
+                <a href="#systems" class="btn-primary">Explore Systems Built</a>
+                <a href="https://kilbeans.me/profile/Gideon%20Keter" target="_blank" class="btn-secondary">Kilbeans Founder Profile ↗</a>
+            </div>
+        </header>
+
+        <!-- Company Section (Kilbeans Ltd) -->
+        <section id="company">
+            <div class="section-label">Enterprise Infrastructure</div>
+            <h2 class="section-title">Kilbeans Ltd Overview</h2>
+            <p style="color: var(--dim); max-width: 680px;">
+                Kilbeans Ltd operates as the central technology holding entity governing digital software platforms, mobile applications, campus media ecosystems, and physical bandwidth management systems.
+            </p>
+
+            <div class="grid-2">
+                <div class="glass-card">
+                    <div class="card-num">[01 // SOFTWARE ECOSYSTEM]</div>
+                    <h3>Consumer & Campus Applications</h3>
+                    <p>
+                        Engineered React Native and Expo applications featuring custom sector feeds, over-the-air update distribution, and encrypted real-time messaging layers.
+                    </p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="card-num">[02 // NETWORK UTILITY]</div>
+                    <h3>Micro-ISP & Bandwidth Gateways</h3>
+                    <p>
+                        Deploying MikroTik RouterOS gateways, captive portal billing systems, automated M-Pesa API STK push callbacks, and dynamic QoS bandwidth queues.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Systems Built Section -->
+        <section id="systems">
+            <div class="section-label">Production Engineering</div>
+            <h2 class="section-title">Core Systems Engineered</h2>
+
+            <!-- System 1: Kilbeans Platform -->
+            <div class="system-card">
+                <div>
+                    <span class="section-label">Mobile Application & Social Core</span>
+                    <h3 style="font-size: 1.6rem; font-weight: 800; margin: 6px 0 14px;">Kilbeans Platform v2.0</h3>
+                    <p style="color: var(--dim); font-size: 0.95rem; margin-bottom: 20px;">
+                        A mobile application engineered around localized community feeds, short-form video streaming, and encrypted messaging. Features offline-first mobile data sync and automated build pipelines. Currently in closed testing on Google Play.
+                    </p>
+                    <div>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Expo EAS</span>
+                        <span class="tech-tag">Firebase Firestore</span>
+                        <span class="tech-tag">Redis Caching</span>
+                        <span class="tech-tag">DigitalOcean Spaces</span>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <h4>// System Telemetry</h4>
+                    <ul class="highlight-list">
+                        <li>Encrypted Messaging Engine</li>
+                        <li>Chronological Media Feeds</li>
+                        <li>Google Play Closed Testing Pipeline</li>
+                        <li>Local Caching & Redis Write-Behind</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- System 2: ISP Billing Infrastructure -->
+            <div class="system-card">
+                <div>
+                    <span class="section-label">Hardware & ISP Routing</span>
+                    <h3 style="font-size: 1.6rem; font-weight: 800; margin: 6px 0 14px;">Automated ISP Hotspot Billing Engine</h3>
+                    <p style="color: var(--dim); font-size: 0.95rem; margin-bottom: 20px;">
+                        End-to-end hardware network control and automated billing engine for local Wi-Fi hotspot management. Handles instant M-Pesa STK payment verification, voucher generation, subscriber session isolation, and bandwidth queueing.
+                    </p>
+                    <div>
+                        <span class="tech-tag">MikroTik RouterOS</span>
+                        <span class="tech-tag">M-Pesa Daraja API</span>
+                        <span class="tech-tag">Node.js Gateway</span>
+                        <span class="tech-tag">TP-Link Access Points</span>
+                        <span class="tech-tag">Walled Garden Routing</span>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <h4>// System Telemetry</h4>
+                    <ul class="highlight-list">
+                        <li>Instant Payment Callback Handling</li>
+                        <li>Dynamic QoS Bandwidth Queueing</li>
+                        <li>Subscriber Session Isolation</li>
+                        <li>Walled Garden Payment Navigation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Capabilities & Cloud -->
+        <section id="architecture">
+            <div class="section-label">Technical Stack</div>
+            <h2 class="section-title">Cloud, Backend & Routing Architecture</h2>
+
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3>Cloud & Server Operations</h3>
+                    <p>Deployment across DigitalOcean Droplets, Contabo VPS, Nginx reverse proxies, Cloudflare DNS proxies, and S3-compatible object storage setups.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Data Pipelines & Caching</h3>
+                    <p>Architecting low-latency data sync using Cloud Firestore indexing, Redis in-memory caching, and SQLite local storage layers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section style="text-align: center; padding: 100px 0;">
+            <div class="section-label">Direct Communication</div>
+            <h2 class="section-title">Connect with the Lead Systems Engineer</h2>
+            <p style="color: var(--dim); max-width: 520px; margin: 0 auto 32px;">
+                Open for technical collaborations, cloud architecture consultations, and enterprise software engineering.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                <a href="mailto:admin@kilbeans.com" class="btn-primary">Direct Email Inquiry</a>
+                <a href="https://kilbeans.me/profile/Gideon%20Keter" target="_blank" class="btn-secondary">View @Gideon Keter Profile ↗</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kilbeans Ltd. Engineered & Designed by Gideon Keter.</p>
+    </footer>
+
+</body>
+</html>
