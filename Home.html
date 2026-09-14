@@ -1,250 +1,758 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kilbeans | Authentically Social</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --accent: #60a5fa;
-            --bg: #020617;
-            --card-bg: #0f172a;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --glow: rgba(37, 99, 235, 0.15);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kilbeans | Authentically Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-bright: #3b82f6;
+    --accent: #22d3ee;
+    --accent-2: #60a5fa;
+    --bg: #020617;
+    --bg-2: #060b1f;
+    --card-bg: rgba(15, 23, 42, 0.55);
+    --stroke: rgba(148, 163, 184, 0.12);
+    --stroke-hi: rgba(96, 165, 250, 0.35);
+    --text-main: #f1f5f9;
+    --text-dim: #94a3b8;
+    --text-mute: #64748b;
+    --glow: rgba(37, 99, 235, 0.28);
+    --glow-cyan: rgba(34, 211, 238, 0.22);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Hero Background Enhancement */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1523240682765-e70e80799918?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-            z-index: -2;
-            mask-image: radial-gradient(circle, black, transparent 80%);
-        }
+  html { scroll-behavior: smooth; }
 
-        .glow-sphere {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(80px);
-        }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
 
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 20px 5%;
-            background: rgba(2, 6, 23, 0.8);
-            backdrop-filter: blur(16px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
+  /* ---------- BACKGROUND: grid + aurora ---------- */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background-image:
+      linear-gradient(rgba(96, 165, 250, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96, 165, 250, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
+    pointer-events: none;
+  }
+  .bg-aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(700px 500px at 15% 5%, var(--glow), transparent 60%),
+      radial-gradient(600px 400px at 85% 10%, var(--glow-cyan), transparent 60%),
+      radial-gradient(900px 700px at 50% 100%, rgba(37, 99, 235, 0.10), transparent 65%);
+    pointer-events: none;
+  }
+  .bg-noise {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -1px; }
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 18px 5%;
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid var(--stroke);
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-bright), var(--accent), transparent);
+    opacity: 0.6;
+    animation: scanline 6s linear infinite;
+  }
+  @keyframes scanline {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
 
-        .hero {
-            padding: 180px 5% 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
+  .logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+  }
+  .logo-mark {
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 20px var(--glow), inset 0 0 12px rgba(255,255,255,0.15);
+    position: relative;
+  }
+  .logo-mark::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 5px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), transparent 60%);
+  }
+  .logo-text {
+    background: linear-gradient(90deg, #ffffff, #93c5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
 
-        h1 { font-size: clamp(2.8rem, 9vw, 5rem); font-weight: 900; letter-spacing: -3px; line-height: 1.05; margin-bottom: 25px; }
-        h1 span { 
-            background: linear-gradient(90deg, #2563eb, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero p { max-width: 700px; color: var(--text-dim); font-size: 1.3rem; margin-bottom: 45px; }
+  .nav-links { display: flex; gap: 8px; align-items: center; }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.25s ease;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .nav-links a:hover { color: var(--text-main); background: rgba(96, 165, 250, 0.08); }
+  .nav-links a.cta {
+    color: var(--text-main);
+    background: linear-gradient(135deg, var(--primary), var(--primary-bright));
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+  }
 
-        .preview-container {
-            perspective: 1500px;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 60px;
-        }
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 180px 5% 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+  }
 
-        .mockup {
-            background: var(--card-bg);
-            border: 10px solid #1e293b;
-            border-radius: 48px;
-            width: 300px;
-            height: 620px;
-            overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-            transform: rotateY(-15deg) rotateX(5deg);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--stroke-hi);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
 
-        .mockup-secondary {
-            transform: rotateY(15deg) rotateX(5deg);
-            margin-top: 40px;
-        }
+  h1 {
+    font-size: clamp(2.6rem, 8.5vw, 5.2rem);
+    font-weight: 900;
+    letter-spacing: -3px;
+    line-height: 1.02;
+    margin-bottom: 28px;
+    max-width: 1000px;
+  }
+  h1 span {
+    background: linear-gradient(120deg, #60a5fa 0%, #22d3ee 45%, #2563eb 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s linear infinite;
+    position: relative;
+  }
+  @keyframes shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
 
-        .mockup:hover { transform: rotateY(0deg) rotateX(0deg) scale(1.02); }
+  .hero p.lead {
+    max-width: 680px;
+    color: var(--text-dim);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+  .hero p.lead strong { color: var(--text-main); font-weight: 600; }
 
-        .chat-ui { padding: 20px; }
-        .bubble { padding: 12px 16px; border-radius: 20px; margin-bottom: 12px; font-size: 0.9rem; max-width: 85%; }
-        .received { background: #1e293b; border-bottom-left-radius: 4px; }
-        .sent { background: var(--primary); border-bottom-right-radius: 4px; margin-left: auto; }
+  .cta-wrap {
+    position: relative;
+    display: inline-flex;
+    margin-bottom: 80px;
+  }
+  .btn {
+    position: relative;
+    padding: 18px 38px;
+    border-radius: 100px;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-bright) 100%);
+    box-shadow:
+      0 0 0 1px rgba(96, 165, 250, 0.3),
+      0 20px 40px -10px rgba(37, 99, 235, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.5), 0 25px 50px -10px rgba(37, 99, 235, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+  .btn:hover::before { transform: translateX(100%); }
 
-        .sector-header {
-            padding: 25px 20px;
-            background: linear-gradient(rgba(255,255,255,0.05), transparent);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+  .pulse-ring {
+    position: absolute;
+    inset: -2px;
+    border-radius: 100px;
+    border: 1px solid var(--primary-bright);
+    animation: ring-pulse 3s ease-out infinite;
+    pointer-events: none;
+  }
+  .pulse-ring.delay { animation-delay: 1.5s; }
+  @keyframes ring-pulse {
+    0%   { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.25); opacity: 0; }
+  }
 
-        .post-card {
-            margin: 15px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-            overflow: hidden;
-        }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-mute);
+    margin-bottom: 80px;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 8px; }
+  .hero-meta span::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+  }
 
-        .post-img { 
-            width: 100%; 
-            height: 240px; 
-            background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=500&q=80'); 
-            background-size: cover; 
-            background-position: center;
-        }
-        
-        .features { padding: 100px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
-        .feature-card { 
-            padding: 50px; 
-            background: rgba(15, 23, 42, 0.5); 
-            border-radius: 32px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+  /* ---------- PHONE MOCKUPS ---------- */
+  .preview-container {
+    perspective: 1800px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 20px;
+    position: relative;
+  }
+  .preview-container::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 700px; height: 700px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15), transparent 65%);
+    filter: blur(60px);
+    z-index: -1;
+    pointer-events: none;
+  }
 
-        .btn { 
-            padding: 20px 45px; 
-            border-radius: 100px; 
-            font-weight: 800; 
-            text-decoration: none; 
-            background: var(--primary); 
-            color: white; 
-            transition: 0.4s; 
-            border: none; 
-            font-size: 1.1rem;
-            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
-        }
+  .mockup {
+    position: relative;
+    background: linear-gradient(180deg, #0b1226 0%, #060a1c 100%);
+    border: 1px solid rgba(96, 165, 250, 0.18);
+    border-radius: 44px;
+    width: 300px;
+    height: 620px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 8px rgba(15, 23, 42, 0.8),
+      0 0 0 9px rgba(96, 165, 250, 0.15),
+      0 60px 120px -20px rgba(0, 0, 0, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transform: rotateY(-15deg) rotateX(4deg);
+    transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .mockup::before {
+    /* Notch */
+    content: '';
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 22px;
+    background: #000;
+    border-radius: 100px;
+    z-index: 10;
+    box-shadow: inset 0 0 8px rgba(96, 165, 250, 0.2);
+  }
+  .mockup::after {
+    /* Scan line sweep */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(96, 165, 250, 0.06) 50%, transparent 100%);
+    background-size: 100% 200%;
+    animation: mockup-scan 5s linear infinite;
+    pointer-events: none;
+    z-index: 5;
+  }
+  @keyframes mockup-scan {
+    0%   { background-position: 0 -100%; }
+    100% { background-position: 0 200%; }
+  }
 
-        footer { padding: 100px 5% 50px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .footer-links a { color: var(--text-dim); margin: 0 20px; text-decoration: none; font-size: 0.95rem; }
+  .mockup-secondary {
+    transform: rotateY(15deg) rotateX(4deg);
+    margin-top: 40px;
+  }
+  .mockup:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.03);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow:
+      0 0 0 8px rgba(15, 23, 42, 0.8),
+      0 0 0 9px rgba(96, 165, 250, 0.35),
+      0 70px 140px -20px rgba(37, 99, 235, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
 
-        @media (max-width: 768px) {
-            .preview-container { flex-direction: column; align-items: center; perspective: none; }
-            .mockup { transform: none !important; width: 100%; max-width: 320px; }
-        }
-    </style>
+  .sector-header {
+    padding: 40px 20px 20px;
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.12), transparent);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.92rem;
+    border-bottom: 1px solid var(--stroke);
+    position: relative;
+    z-index: 2;
+  }
+  .sector-header i { color: var(--accent); }
+  .sector-label {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-mute);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--stroke);
+  }
+
+  .chat-ui { padding: 20px 16px; display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 2; }
+  .bubble {
+    padding: 11px 15px;
+    border-radius: 18px;
+    font-size: 0.82rem;
+    max-width: 85%;
+    line-height: 1.5;
+    position: relative;
+  }
+  .received {
+    background: #1e293b;
+    border-bottom-left-radius: 4px;
+    border: 1px solid rgba(148, 163, 184, 0.08);
+  }
+  .sent {
+    background: linear-gradient(135deg, var(--primary), var(--primary-bright));
+    border-bottom-right-radius: 4px;
+    margin-left: auto;
+    box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.6);
+  }
+
+  .post-card {
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--stroke);
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+  .post-img {
+    width: 100%;
+    height: 220px;
+    background:
+      linear-gradient(180deg, transparent 40%, rgba(2, 6, 23, 0.85) 100%),
+      url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=500&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .post-img::after {
+    content: 'ENCRYPTED';
+    position: absolute;
+    top: 12px; left: 12px;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(2, 6, 23, 0.7);
+    border: 1px solid rgba(34, 211, 238, 0.4);
+    color: var(--accent);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ---------- FEATURES ---------- */
+  .features-section {
+    padding: 120px 5%;
+    position: relative;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 60px;
+    max-width: 700px;
+    line-height: 1.15;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .feature-card {
+    padding: 40px 36px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-radius: 24px;
+    border: 1px solid var(--stroke);
+    transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* Mouse-tracked spotlight */
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(96, 165, 250, 0.12), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--stroke-hi);
+    box-shadow: 0 30px 60px -20px rgba(37, 99, 235, 0.35);
+  }
+  .feature-card > * { position: relative; z-index: 1; }
+
+  .feature-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(34, 211, 238, 0.1));
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    display: grid;
+    place-items: center;
+    margin-bottom: 24px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .feature-icon i { color: var(--accent); width: 24px; height: 24px; }
+
+  .feature-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 12px;
+  }
+  .feature-card p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .feature-index {
+    position: absolute;
+    top: 24px; right: 28px;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-mute);
+    letter-spacing: 1px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 80px 5% 50px;
+    border-top: 1px solid var(--stroke);
+    text-align: center;
+    position: relative;
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 40%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-brand span { display: flex; align-items: center; gap: 8px; }
+  .footer-brand span::before {
+    content: '';
+    width: 3px; height: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .preview-container { flex-direction: column; align-items: center; perspective: none; gap: 40px; }
+    .mockup { transform: none !important; width: 100%; max-width: 320px; }
+    .mockup-secondary { margin-top: 0; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 14px 5%; }
+    .nav-links a { padding: 6px 10px; font-size: 0.72rem; }
+    .hero { padding: 140px 5% 80px; }
+    .hero-meta { gap: 20px; font-size: 0.65rem; }
+    .features-section { padding: 80px 5%; }
+    .feature-card { padding: 32px 26px; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="glow-sphere" style="top: -100px; right: -100px;"></div>
+<div class="bg-grid"></div>
+<div class="bg-aurora"></div>
+<div class="bg-noise"></div>
 
-    <nav>
-        <a href="#" class="logo">Kilbeans</a>
-        <div class="footer-links">
-            <a href="#features">Technology</a>
-            <a href="mailto:support@kilbeans.com" style="color: var(--primary); font-weight: 600;">Support</a>
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark"></div>
+    <span class="logo-text">Kilbeans</span>
+  </a>
+  <div class="nav-links">
+    <a href="#features">Technology</a>
+    <a href="mailto:support@kilbeans.com" class="cta">Support</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    v2.0 · Now in Private Beta
+  </div>
+
+  <h1>Human Logic. <br><span>Digital Sovereign.</span></h1>
+
+  <p class="lead">
+    The premium campus ecosystem for creators who value <strong>depth over clicks</strong>.
+    Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging.
+  </p>
+
+  <div class="cta-wrap">
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring delay"></div>
+    <a href="#" class="btn">
+      Get Kilbeans for Android
+      <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+    </a>
+  </div>
+
+  <div class="hero-meta">
+    <span>End-to-End Encrypted</span>
+    <span>On-Device AI</span>
+    <span>Zero Tracking</span>
+  </div>
+
+  <div class="preview-container">
+    <div class="mockup reveal">
+      <div class="sector-header">
+        <i data-lucide="users" style="width: 18px; height: 18px;"></i>
+        Campus Sector
+        <span class="sector-label">Live</span>
+      </div>
+      <div class="chat-ui">
+        <div class="bubble received">Are we meeting at the library?</div>
+        <div class="bubble sent">Yeah, but keep it in the private Sector — not the main feed.</div>
+        <div class="bubble received">Got it. Love that this is encrypted.</div>
+        <div class="bubble sent">Exactly. Securely private, authentically social.</div>
+      </div>
+    </div>
+
+    <div class="mockup mockup-secondary reveal">
+      <div class="sector-header">
+        <i data-lucide="graduation-cap" style="width: 18px; height: 18px;"></i>
+        Study Group
+        <span class="sector-label">E2EE</span>
+      </div>
+      <div class="post-card">
+        <div class="post-img"></div>
+        <div style="padding: 16px; font-size: 0.82rem; text-align: left;">
+          <strong style="color: var(--accent-2);">@campus_creator</strong>
+          <span style="color: var(--text-dim);"> Real interactions only. No bots, no noise.</span>
+          <div style="margin-top: 14px; color: var(--text-mute); display: flex; gap: 18px; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.5px;">
+            <span style="display: flex; align-items: center; gap: 6px;"><i data-lucide="heart" style="width: 12px; height: 12px;"></i> 2.5K</span>
+            <span style="display: flex; align-items: center; gap: 6px;"><i data-lucide="share-2" style="width: 12px; height: 12px;"></i> 45</span>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <header class="hero">
-        <h1>Human Logic. <br><span>Digital Sovereign.</span></h1>
-        <p>The premium campus ecosystem for creators who value depth over clicks. Experience unmanipulated feeds, secure private Sectors, and E2EE messaging.</p>
-        
-        <a href="#" class="btn">Get Kilbeans for Android</a>
+<section id="features" class="features-section">
+  <div class="section-label">Architecture</div>
+  <h2 class="section-title">Built on principles you can verify, not promises you must trust.</h2>
 
-        <div class="preview-container">
-            <div class="mockup">
-                <div class="sector-header">
-                    <i data-lucide="users" style="color: var(--primary); width: 18px;"></i>
-                    Campus Sector
-                </div>
-                <div class="chat-ui" style="display: flex; flex-direction: column;">
-                    <div class="bubble received">Are we meeting at the library?</div>
-                    <div class="bubble sent">Yeah, but don't post it on the main feed—keep it in the private Sector.</div>
-                    <div class="bubble received">Got it. Love that this is encrypted.</div>
-                    <div class="bubble sent">Exactly. Securely private, authentically social.</div>
-                </div>
-            </div>
+  <div class="features">
+    <div class="feature-card reveal">
+      <span class="feature-index">01</span>
+      <div class="feature-icon"><i data-lucide="shield"></i></div>
+      <h3>Honeypot Security</h3>
+      <p>Proprietary logic traps automated scrapers and bots before they ever reach your feed. Authentic interactions, guaranteed at the protocol level.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-index">02</span>
+      <div class="feature-icon"><i data-lucide="database"></i></div>
+      <h3>Local-First Data</h3>
+      <p>SQLite on-device means total ownership of your personal history — with lightning-fast campus networking when you're connected.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-index">03</span>
+      <div class="feature-icon"><i data-lucide="clock"></i></div>
+      <h3>Zero-Drift Feeds</h3>
+      <p>No predictive modeling. A pure, chronological flow of campus updates from the people you actually choose to follow.</p>
+    </div>
+  </div>
+</section>
 
-            <div class="mockup mockup-secondary">
-                <div class="sector-header">
-                    <i data-lucide="graduation-cap" style="color: var(--primary); width: 18px;"></i>
-                    Study Group
-                </div>
-                <div class="post-card">
-                    <div class="post-img"></div> <div style="padding: 15px; font-size: 0.85rem; text-align: left;">
-                        <strong>@campus_creator</strong> Real interactions only. No bots, no noise. Just the best parts of campus life.
-                        <div style="margin-top: 15px; color: var(--text-dim); display: flex; gap: 15px;">
-                            <span><i data-lucide="heart" style="width: 14px;"></i> 2.5k</span>
-                            <span><i data-lucide="share-2" style="width: 14px;"></i> 45</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<footer>
+  <div class="footer-brand">
+    <span>© 2026 Kilbeans</span>
+    <span>Authentically Social</span>
+    <span>Securely Private</span>
+  </div>
+</footer>
 
-    <section id="features" class="features">
-        <div class="feature-card">
-            <i data-lucide="shield" style="color: var(--primary); width: 40px; height: 40px; margin-bottom: 25px;"></i>
-            <h3>Honeypot Security</h3>
-            <p>Our proprietary logic traps automated scrapers and bots before they reach your feed, ensuring an authentic social experience for students.</p>
-        </div>
-        <div class="feature-card">
-            <i data-lucide="database" style="color: var(--primary); width: 40px; height: 40px; margin-bottom: 25px;"></i>
-            <h3>Local-First Data</h3>
-            <p>Leveraging SQLite on-device ensures total ownership of your personal history and lightning-fast campus networking.</p>
-        </div>
-        <div class="feature-card">
-            <i data-lucide="clock" style="color: var(--primary); width: 40px; height: 40px; margin-bottom: 25px;"></i>
-            <h3>Zero-Drift Feeds</h3>
-            <p>No predictive modeling. Experience a pure, chronological flow of campus updates from the people you choose to follow.</p>
-        </div>
-    </section>
+<script>
+  lucide.createIcons();
 
-    <footer>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">&copy; 2026 Kilbeans. Authentically Social. Securely Private.</p>
-    </footer>
+  // Mouse-tracked spotlight on feature cards
+  document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width) * 100 + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top) / r.height) * 100 + '%');
+    });
+  });
 
-    <script>
-        lucide.createIcons();
-    </script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Subtle parallax on hero glow
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    document.querySelector('.bg-aurora').style.transform = `translateY(${y * 0.15}px)`;
+  }, { passive: true });
+</script>
+
 </body>
 </html>
