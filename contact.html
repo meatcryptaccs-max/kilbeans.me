@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Kilbeans</title>
+<style>
+:root{--primary:#2563eb;--accent:#22d3ee;--bg:#020617;--text:#f1f5f9;--dim:#94a3b8;--stroke:rgba(148,163,184,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(700px 500px at 15% 5%,rgba(37,99,235,.2),transparent 60%),radial-gradient(600px 400px at 85% 10%,rgba(34,211,238,.15),transparent 60%)}
+.wrap{max-width:780px;margin:0 auto;padding:100px 24px 80px}
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--dim);text-decoration:none;font-family:ui-monospace,monospace;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:48px;padding:8px 14px;border-radius:8px;border:1px solid var(--stroke);transition:.25s}
+.back:hover{color:var(--text);background:rgba(96,165,250,.08)}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
+h1 span{background:linear-gradient(120deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+p{color:var(--dim);margin-bottom:20px;font-size:1.02rem}
+a{color:#60a5fa;text-decoration:none}
+a:hover{text-decoration:underline}
+.label{font-family:ui-monospace,monospace;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.label::before{content:'';width:24px;height:1px;background:var(--accent)}
+.cards{display:grid;gap:16px;margin-top:40px}
+.card{padding:28px 26px;background:rgba(15,23,42,.55);backdrop-filter:blur(20px);border:1px solid var(--stroke);border-radius:20px;transition:.3s}
+.card:hover{border-color:rgba(96,165,250,.35);transform:translateY(-3px)}
+.card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.card p{margin-bottom:12px;font-size:.9rem}
+.card .mail{font-family:ui-monospace,monospace;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="/" class="back">← Back to Home</a>
+<div class="label">Contact</div>
+<h1>Talk to us. <span>We actually reply.</span></h1>
+<p>Whether you're a student, a campus rep, a researcher, or just curious — we'd love to hear from you.</p>
+
+<div class="cards">
+<div class="card">
+<h3>Support</h3>
+<p>Account issues, bug reports, or help getting started. We respond within 24 hours.</p>
+<a class="mail" href="mailto:support@kilbeans.com">support@kilbeans.com →</a>
+</div>
+<div class="card">
+<h3>General</h3>
+<p>Partnerships, press, feature ideas, or just say hi. We read every message.</p>
+<a class="mail" href="mailto:hello@kilbeans.com">hello@kilbeans.com →</a>
+</div>
+<div class="card">
+<h3>Campus Reps</h3>
+<p>Want to bring Kilbeans to your campus? Apply to become a campus rep.</p>
+<a class="mail" href="mailto:campus@kilbeans.com">campus@kilbeans.com →</a>
+</div>
+</div>
+</div>
+</body>
+</html>
