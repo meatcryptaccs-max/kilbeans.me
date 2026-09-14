@@ -3,126 +3,460 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | Kilbeans</title>
+<title>About | Kilbeans Infrastructure</title>
 <style>
-:root{--primary:#2563eb;--accent:#22d3ee;--bg:#020617;--text:#f1f5f9;--dim:#94a3b8;--stroke:rgba(148,163,184,.12)}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(700px 500px at 15% 5%,rgba(37,99,235,.2),transparent 60%),radial-gradient(600px 400px at 85% 10%,rgba(34,211,238,.15),transparent 60%)}
-body::after{content:'';position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(96,165,250,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(96,165,250,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 20%,transparent 75%)}
-.wrap{max-width:820px;margin:0 auto;padding:100px 24px 80px}
-.back{display:inline-flex;align-items:center;gap:8px;color:var(--dim);text-decoration:none;font-family:ui-monospace,monospace;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:48px;padding:8px 14px;border-radius:8px;border:1px solid var(--stroke);transition:.25s}
-.back:hover{color:var(--text);background:rgba(96,165,250,.08)}
-.label{font-family:ui-monospace,monospace;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px}
-.label::before{content:'';width:24px;height:1px;background:var(--accent)}
-h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
-h1 span{background:linear-gradient(120deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-p{color:var(--dim);margin-bottom:20px;font-size:1.02rem}
-p strong{color:var(--text);font-weight:600}
-h2{font-size:1.2rem;font-weight:700;margin:44px 0 16px;color:var(--text);letter-spacing:-.3px;display:flex;align-items:center;gap:10px}
-h2::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 8px var(--accent);flex-shrink:0}
-a{color:#60a5fa;text-decoration:none}
-a:hover{text-decoration:underline}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:32px 0 12px}
-.stat{padding:22px 20px;background:rgba(15,23,42,.55);backdrop-filter:blur(20px);border:1px solid var(--stroke);border-radius:16px;transition:.3s}
-.stat:hover{border-color:rgba(96,165,250,.35);transform:translateY(-3px)}
-.stat-value{font-size:1.7rem;font-weight:900;letter-spacing:-1px;background:linear-gradient(120deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:8px}
-.stat-label{font-family:ui-monospace,monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--dim)}
-.founder{display:flex;gap:20px;align-items:flex-start;padding:28px 26px;background:rgba(15,23,42,.55);backdrop-filter:blur(20px);border:1px solid var(--stroke);border-radius:20px;margin-top:20px;position:relative;overflow:hidden}
-.founder::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--primary),var(--accent))}
-.founder-avatar{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#3b82f6,#22d3ee);flex-shrink:0;position:relative;display:grid;place-items:center;font-weight:900;font-size:1.2rem;color:#fff;letter-spacing:-1px;box-shadow:0 0 24px rgba(59,130,246,.5)}
-.founder-info h3{font-size:1.05rem;font-weight:800;margin-bottom:4px;letter-spacing:-.3px}
-.founder-role{font-family:ui-monospace,monospace;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.founder-info p{margin-bottom:0;font-size:.9rem;line-height:1.6}
-.timeline{margin-top:20px;position:relative;padding-left:24px}
-.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--primary),var(--accent),transparent)}
-.timeline-item{position:relative;padding-bottom:24px}
-.timeline-item:last-child{padding-bottom:0}
-.timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 10px rgba(34,211,238,.6)}
-.timeline-year{font-family:ui-monospace,monospace;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-.timeline-title{font-weight:700;font-size:.98rem;margin-bottom:4px;letter-spacing:-.2px}
-.timeline-desc{color:var(--dim);font-size:.88rem;line-height:1.55}
-@media(max-width:520px){
-.founder{flex-direction:column}
-.wrap{padding:80px 20px 60px}
-h2{margin:36px 0 14px}
+:root {
+  --primary: #2563eb;
+  --primary-glow: rgba(37, 99, 235, 0.35);
+  --accent: #22d3ee;
+  --accent-glow: rgba(34, 211, 238, 0.25);
+  --bg: #020617;
+  --surface: rgba(15, 23, 42, 0.65);
+  --surface-hover: rgba(30, 41, 59, 0.8);
+  --text: #f8fafc;
+  --dim: #94a3b8;
+  --stroke: rgba(148, 163, 184, 0.12);
+  --stroke-bright: rgba(34, 211, 238, 0.3);
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Futuristic Animated Mesh Background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: 
+    radial-gradient(800px 600px at 10% 10%, rgba(37, 99, 235, 0.22), transparent 70%),
+    radial-gradient(700px 500px at 90% 20%, rgba(34, 211, 238, 0.18), transparent 65%),
+    radial-gradient(600px 600px at 50% 85%, rgba(15, 23, 42, 0.8), transparent 80%);
+}
+
+/* Subtle Cybernetic Grid Overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 80%);
+}
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 24px 100px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--dim);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--stroke);
+  backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back:hover {
+  color: var(--text);
+  border-color: var(--stroke-bright);
+  background: rgba(37, 99, 235, 0.12);
+  transform: translateX(-3px);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -1.8px;
+  line-height: 1.08;
+  margin-bottom: 24px;
+}
+
+h1 span {
+  background: linear-gradient(120deg, #60a5fa 10%, #22d3ee 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lead {
+  font-size: 1.12rem;
+  color: var(--dim);
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.lead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 52px 0 20px;
+  color: var(--text);
+  letter-spacing: -0.4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h2::before {
+  content: '';
+  width: 4px;
+  height: 18px;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+p {
+  color: var(--dim);
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+p strong {
+  color: var(--text);
+}
+
+/* Glass Metrics Cards */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 36px 0 20px;
+}
+
+.stat {
+  padding: 24px 20px;
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.4), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.stat:hover {
+  border-color: var(--stroke-bright);
+  transform: translateY(-4px);
+  background: var(--surface-hover);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.stat:hover::after { opacity: 1; }
+
+.stat-value {
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  background: linear-gradient(120deg, #60a5fa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--dim);
+}
+
+/* Timeline Architecture */
+.timeline {
+  margin-top: 24px;
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--accent), rgba(15, 23, 42, 0.2));
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.timeline-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.timeline-desc {
+  color: var(--dim);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* Founder Infrastructure Card */
+.founder {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 32px;
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.founder::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+}
+
+.founder-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1e40af, #0891b2);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: -1px;
+  box-shadow: 0 0 30px var(--primary-glow);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: var(--font-mono);
+}
+
+.founder-info h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+.founder-role {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.founder-info p {
+  margin-bottom: 0;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--dim);
+}
+
+a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .wrap { padding: 60px 18px 80px; }
+  .founder { flex-direction: column; padding: 24px; }
+  .founder-avatar { width: 52px; height: 52px; font-size: 1.1rem; }
+  .stats { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
+
 <div class="wrap">
-<a href="/" class="back">← Back to Home</a>
-<div class="label">About</div>
-<h1>Social, rebuilt for <span>people who think in systems.</span></h1>
+  <a href="/" class="back">← System Overview</a>
+  
+  <div class="badge">Ecosystem Architecture</div>
+  
+  <h1>Digital Infrastructure <span>Rebuilt for Campus Scale.</span></h1>
 
-<p>Kilbeans started with a simple frustration: every mainstream platform optimizes for the algorithm, not the human. So we built the opposite — a campus ecosystem where <strong>depth, privacy, and authenticity</strong> aren't features bolted on later, they're the foundation the whole thing is built on.</p>
+  <p class="lead">
+    Kilbeans is an integrated <strong>high-speed ISP routing network and social utility platform</strong>. Built to eliminate centralized latency, algorithm manipulation, and disconnected campus communication.
+  </p>
 
-<h2>Our Aim</h2>
-<p>To give students, researchers, and creators a social platform that <strong>respects their attention, protects their privacy, and rewards substance over performance</strong>. No algorithmic manipulation. No data harvesting. No engagement traps. Just a clean, encrypted space where reputation is earned through what you actually contribute — not through how well you play a game you never agreed to.</p>
+  <h2>System Purpose</h2>
+  <p>
+    Modern academic environments require speed, reliability, and real-time distribution. Kilbeans unifies hardware-level Wi-Fi routing infrastructure with a dedicated social ecosystem—giving students and faculty an encrypted, zero-lag portal for official announcements, community sector feeds, and high-speed local data pipeline access.
+  </p>
 
-<h2>What Makes Us Different</h2>
-<p>End-to-end encryption by default. Local-first data storage on your device. Zero ad trackers. Open protocols. And a Honeypot Security system that traps automated scrapers before they ever reach your feed. Every architectural decision we've made starts from the same question: <strong>what would this look like if we built it for the user, not the advertiser?</strong></p>
+  <h2>Technical Foundation</h2>
+  <p>
+    Built with a mobile-first <strong>React Native & Expo pipeline</strong>, powered by real-time Firestore database indexing, DigitalOcean Spaces object storage, and ultra-low latency Redis write-behind caching. Hardware routing is powered by optimized MikroTik RouterOS gateways and enterprise access point configurations.
+  </p>
 
-<h2>Kilbeans by the Numbers</h2>
-<div class="stats">
-<div class="stat">
-<div class="stat-value">2023</div>
-<div class="stat-label">Founded</div>
-</div>
-<div class="stat">
-<div class="stat-value">1,000+</div>
-<div class="stat-label">Active Users</div>
-</div>
-<div class="stat">
-<div class="stat-value">100%</div>
-<div class="stat-label">Encrypted</div>
-</div>
-<div class="stat">
-<div class="stat-value">Zero</div>
-<div class="stat-label">Trackers</div>
-</div>
+  <h2>System Telemetry</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">v2.0</div>
+      <div class="stat-label">Build Version</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">Phase 2</div>
+      <div class="stat-label">Closed Testing</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">100%</div>
+      <div class="stat-label">Network Uptime</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">Zero</div>
+      <div class="stat-label">Ad Trackers</div>
+    </div>
+  </div>
+
+  <h2>Deployment Roadmap</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-tag">Phase 01 · Architecture</div>
+      <div class="timeline-title">Backend & ISP Routing Setup</div>
+      <div class="timeline-desc">Engineered custom Mikrotik captive portal routing, Redis write-behind caching layers, and initial React Native cross-platform application builds.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-tag">Phase 02 · Closed Testing</div>
+      <div class="timeline-tag" style="color:#60a5fa;">[Active Protocol]</div>
+      <div class="timeline-title">Google Play Console Staging</div>
+      <div class="timeline-desc">Conducting mandatory 14-day continuous closed testing rollout with active campus telemetry, UI optimization, and stress-testing indexing algorithms.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-tag">Phase 03 · Production Launch</div>
+      <div class="timeline-title">Campus-Wide Infrastructure Mandate</div>
+      <div class="timeline-desc">Deploying official verified faculty notification channels, production Google Play release, and full Wi-Fi hotspot bandwidth expansion.</div>
+    </div>
+  </div>
+
+  <h2>System Architect & Founder</h2>
+  <div class="founder">
+    <div class="founder-avatar">GK</div>
+    <div class="founder-info">
+      <h3>Gideon Keter</h3>
+      <div class="founder-role">Lead Systems Engineer & Founder · Kenya</div>
+      <p>
+        Gideon engineered Kilbeans to bridge high-performance hardware network routing with localized, real-time social platforms. Operating at the intersection of medical discipline and enterprise software engineering, he leads full-stack mobile development, system architecture, and ISP infrastructure deployment.
+      </p>
+    </div>
+  </div>
+
+  <h2>System Inquiries</h2>
+  <p>
+    For technical queries, faculty integration protocols, or system access, contact the admin core directly at <a href="mailto:admin@kilbeans.com">admin@kilbeans.com</a>.
+  </p>
 </div>
 
-<h2>Our Story</h2>
-<div class="timeline">
-<div class="timeline-item">
-<div class="timeline-year">2023</div>
-<div class="timeline-title">Kilbeans begins</div>
-<div class="timeline-desc">Development starts on the first version of the platform. Kilbeans LTD is formed, with a clear thesis: campus social should be sovereign, encrypted, and depth-first.</div>
-</div>
-<div class="timeline-item">
-<div class="timeline-year">2024</div>
-<div class="timeline-title">Core architecture ships</div>
-<div class="timeline-desc">The Honeypot Security system, local-first SQLite storage, and end-to-end encryption layer are all built into the foundation.</div>
-</div>
-<div class="timeline-item">
-<div class="timeline-year">2025</div>
-<div class="timeline-title">Private beta opens</div>
-<div class="timeline-desc">First Android build reaches private testers on campus. Sectors, encrypted messaging, and zero-drift feeds go live.</div>
-</div>
-<div class="timeline-item">
-<div class="timeline-year">2026</div>
-<div class="timeline-title">1,000+ users</div>
-<div class="timeline-desc">Kilbeans crosses 1,000 active users across campuses. Public launch of v2.0 in private beta.</div>
-</div>
-</div>
-
-<h2>Who We Build For</h2>
-<p>Students, researchers, and creators who want to <strong>build reputation through substance</strong> — not through engagement bait. People who want a social feed that respects their time, an inbox that can't be read by anyone else, and a platform that treats them like adults.</p>
-
-<h2>Founder</h2>
-<div class="founder">
-<div class="founder-avatar">GK</div>
-<div class="founder-info">
-<h3>Gideon Kimutai Korir</h3>
-<div class="founder-role">Founder · Developer · Kericho, Kenya</div>
-<p>Gideon is a 22-year-old developer from Kericho who started building Kilbeans in 2023 out of frustration with how mainstream platforms treat their users. He leads development, architecture, and product design — with a focus on privacy-first engineering and local-first data systems.</p>
-</div>
-</div>
-
-<h2>Get in Touch</h2>
-<p>Reach us at <a href="mailto:hello@kilbeans.com">hello@kilbeans.com</a> — we read every message. For partnerships, campus reps, or press, see our <a href="/contact.html">contact page</a>.</p>
-
-</div>
 </body>
 </html>
