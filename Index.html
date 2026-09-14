@@ -45,7 +45,6 @@
 
   a { color: inherit; }
 
-  /* ---------- BACKGROUND ---------- */
   .bg-grid {
     position: fixed;
     inset: 0;
@@ -78,7 +77,6 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* ---------- NAV ---------- */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -163,7 +161,6 @@
   }
   .nav-links a .nav-icon { display: none; width: 14px; height: 14px; }
 
-  /* Mobile menu toggle */
   .menu-toggle {
     display: none;
     width: 40px; height: 40px;
@@ -178,7 +175,6 @@
   }
   .menu-toggle:hover { background: rgba(96, 165, 250, 0.15); }
 
-  /* Mobile drawer */
   .mobile-drawer {
     position: fixed;
     top: 0; right: 0;
@@ -194,17 +190,18 @@
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    overflow-y: auto;
   }
   .mobile-drawer.open { transform: translateX(0); }
   .mobile-drawer a {
     text-decoration: none;
     color: var(--text-dim);
     font-family: var(--mono);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 14px 16px;
+    padding: 13px 16px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -217,7 +214,7 @@
     background: rgba(96, 165, 250, 0.08);
     border-color: var(--stroke-hi);
   }
-  .mobile-drawer a svg { width: 16px; height: 16px; color: var(--accent); }
+  .mobile-drawer a svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
   .mobile-drawer .drawer-divider {
     height: 1px;
     background: var(--stroke);
@@ -236,7 +233,6 @@
   }
   .mobile-overlay.open { opacity: 1; pointer-events: auto; }
 
-  /* ---------- HERO ---------- */
   .hero {
     padding: 140px 20px 80px;
     display: flex;
@@ -390,7 +386,6 @@
     flex-shrink: 0;
   }
 
-  /* ---------- PHONE MOCKUPS ---------- */
   .preview-container {
     perspective: 1800px;
     display: flex;
@@ -466,7 +461,6 @@
     border-color: rgba(96, 165, 250, 0.4);
   }
 
-  /* ---------- PHONE UI ---------- */
   .phone-status {
     display: flex;
     justify-content: space-between;
@@ -786,7 +780,6 @@
     transition: 0.3s;
   }
 
-  /* ---------- SHARED SECTION STYLES ---------- */
   .section {
     padding: 80px 20px;
     position: relative;
@@ -823,7 +816,6 @@
     line-height: 1.65;
   }
 
-  /* ---------- ABOUT ---------- */
   .about-grid {
     display: grid;
     grid-template-columns: 1.15fr 1fr;
@@ -879,7 +871,6 @@
     color: var(--text-mute);
   }
 
-  /* ---------- FEATURES ---------- */
   .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -947,7 +938,6 @@
     letter-spacing: 1px;
   }
 
-  /* ---------- CONTACT ---------- */
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1019,7 +1009,6 @@
   }
   .contact-card:hover .contact-link { color: var(--accent); }
 
-  /* ---------- FOOTER ---------- */
   footer {
     padding: 70px 20px 40px;
     border-top: 1px solid var(--stroke);
@@ -1142,13 +1131,8 @@
     border-radius: 50%;
   }
 
-  /* ---------- SCROLL REVEAL ---------- */
   .reveal { opacity: 0; transform: translateY(20px); transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
-
-  /* ============================================
-     RESPONSIVE
-     ============================================ */
 
   @media (max-width: 1000px) {
     .footer-grid {
@@ -1259,16 +1243,16 @@
 <div class="bg-noise"></div>
 
 <nav>
-  <a href="#top" class="logo">
+  <a href="/" class="logo">
     <div class="logo-mark"></div>
     <span class="logo-text">Kilbeans</span>
   </a>
 
   <div class="nav-links">
-    <a href="#about" class="link-desktop">About</a>
+    <a href="/about/" class="link-desktop">About</a>
     <a href="#features" class="link-desktop">Technology</a>
-    <a href="#contact" class="link-desktop">Contact</a>
-    <a href="mailto:support@kilbeans.com" class="cta">
+    <a href="/contact/" class="link-desktop">Contact</a>
+    <a href="/support/" class="cta">
       <i data-lucide="life-buoy" class="nav-icon"></i>
       Support
     </a>
@@ -1279,30 +1263,35 @@
   </button>
 </nav>
 
-<!-- Mobile drawer -->
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <aside class="mobile-drawer" id="mobileDrawer">
-  <a href="#top" data-close>
+  <a href="/" data-close>
     <i data-lucide="home"></i> Home
   </a>
-  <a href="#about" data-close>
+  <a href="/about/" data-close>
     <i data-lucide="info"></i> About
   </a>
   <a href="#features" data-close>
     <i data-lucide="cpu"></i> Technology
   </a>
-  <a href="#contact" data-close>
+  <a href="/contact/" data-close>
     <i data-lucide="mail"></i> Contact
   </a>
   <div class="drawer-divider"></div>
-  <a href="mailto:support@kilbeans.com">
+  <a href="/support/" data-close>
     <i data-lucide="life-buoy"></i> Support
   </a>
-  <a href="#privacy">
+  <a href="/privacy/" data-close>
     <i data-lucide="shield-check"></i> Privacy
   </a>
-  <a href="#terms">
+  <a href="/terms/" data-close>
     <i data-lucide="file-text"></i> Terms
+  </a>
+  <a href="/childsafety.html" data-close>
+    <i data-lucide="shield"></i> Child Safety
+  </a>
+  <a href="/delete-account.html" data-close>
+    <i data-lucide="user-x"></i> Delete Account
   </a>
 </aside>
 
@@ -1335,7 +1324,6 @@
   </div>
 
   <div class="preview-container">
-    <!-- PHONE 1: FEED -->
     <div class="mockup reveal">
       <div class="phone-status">
         <span>3:11</span>
@@ -1424,7 +1412,6 @@
       </div>
     </div>
 
-    <!-- PHONE 2: PROFILE -->
     <div class="mockup mockup-secondary reveal">
       <div class="phone-status">
         <span>4:32</span>
@@ -1495,7 +1482,6 @@
   </div>
 </header>
 
-<!-- ============================= ABOUT ============================= -->
 <section id="about" class="section">
   <div class="section-label">About</div>
   <h2 class="section-title">Social, rebuilt for people who think in systems.</h2>
@@ -1537,7 +1523,6 @@
   </div>
 </section>
 
-<!-- ============================= TECHNOLOGY ============================= -->
 <section id="features" class="section">
   <div class="section-label">Architecture</div>
   <h2 class="section-title">Built on principles you can verify, not promises you must trust.</h2>
@@ -1582,13 +1567,19 @@
   </div>
 </section>
 
-<!-- ============================= CONTACT ============================= -->
 <section id="contact" class="section">
   <div class="section-label">Contact</div>
   <h2 class="section-title">Talk to us. We actually reply.</h2>
   <p class="section-sub">
     Whether you're a student, a campus rep, a researcher, or just curious — we'd love to hear from you.
   </p>
+
+  <div style="margin-bottom: 40px;">
+    <a href="/contact/" class="btn secondary">
+      Visit full contact page
+      <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+    </a>
+  </div>
 
   <div class="contact-grid">
     <a href="mailto:support@kilbeans.com" class="contact-card reveal">
@@ -1629,11 +1620,10 @@
   </div>
 </section>
 
-<!-- ============================= FOOTER ============================= -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand-block">
-      <a href="#top" class="logo">
+      <a href="/" class="logo">
         <div class="logo-mark"></div>
         <span class="logo-text">Kilbeans</span>
       </a>
@@ -1660,7 +1650,7 @@
       <h4>Product</h4>
       <ul>
         <li><a href="#features">Technology</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="/about/">About</a></li>
         <li><a href="#">Download</a></li>
         <li><a href="#">Changelog</a></li>
         <li><a href="#">Roadmap</a></li>
@@ -1670,8 +1660,8 @@
     <div class="footer-col">
       <h4>Company</h4>
       <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/about/">About Us</a></li>
+        <li><a href="/contact/">Contact</a></li>
         <li><a href="#">Careers</a></li>
         <li><a href="#">Press Kit</a></li>
         <li><a href="#">Blog</a></li>
@@ -1681,18 +1671,18 @@
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-        <li><a href="#privacy">Privacy Policy</a></li>
-        <li><a href="#terms">Terms of Service</a></li>
+        <li><a href="/privacy/">Privacy Policy</a></li>
+        <li><a href="/terms/">Terms of Service</a></li>
+        <li><a href="/childsafety.html">Child Safety</a></li>
+        <li><a href="/delete-account.html">Delete Account</a></li>
         <li><a href="#">Cookie Policy</a></li>
-        <li><a href="#">Security</a></li>
-        <li><a href="#">Compliance</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
-        <li><a href="mailto:support@kilbeans.com">Support</a></li>
+        <li><a href="/support/">Support</a></li>
         <li><a href="mailto:campus@kilbeans.com">Campus Reps</a></li>
         <li><a href="#">Community</a></li>
         <li><a href="#">Status</a></li>
@@ -1713,7 +1703,6 @@
 <script>
   lucide.createIcons();
 
-  // Feature card mouse spotlight
   document.querySelectorAll('.feature-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
@@ -1722,7 +1711,6 @@
     });
   });
 
-  // Scroll reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1733,14 +1721,12 @@
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Parallax (desktop only)
   if (window.matchMedia('(min-width: 901px)').matches) {
     window.addEventListener('scroll', () => {
       document.querySelector('.bg-aurora').style.transform = `translateY(${window.scrollY * 0.15}px)`;
     }, { passive: true });
   }
 
-  // Mobile drawer
   const menuToggle = document.getElementById('menuToggle');
   const mobileDrawer = document.getElementById('mobileDrawer');
   const mobileOverlay = document.getElementById('mobileOverlay');
@@ -1764,4 +1750,4 @@
 </script>
 
 </body>
-</html> 
+</html>
