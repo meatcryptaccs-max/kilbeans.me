@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kilbeans.me/sitemap.xml

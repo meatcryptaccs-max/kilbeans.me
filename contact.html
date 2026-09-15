@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Kilbeans</title>
+<meta name="description" content="Contact the Kilbeans team — support, general enquiries, and campus rep opportunities. We actually reply, within 24 hours.">
+<meta name="theme-color" content="#020617">
+<link rel="icon" href="/assets/logo.png" type="image/png">
+<link rel="canonical" href="https://kilbeans.me/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kilbeans">
+<meta property="og:title" content="Contact | Kilbeans">
+<meta property="og:description" content="Contact the Kilbeans team — support, general enquiries, and campus rep opportunities.">
+<meta property="og:url" content="https://kilbeans.me/contact.html">
+<meta property="og:image" content="https://kilbeans.me/assets/logo.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contact | Kilbeans">
+<meta name="twitter:description" content="Contact the Kilbeans team — support, general enquiries, and campus rep opportunities.">
 <style>
 :root{--primary:#2563eb;--accent:#22d3ee;--bg:#020617;--text:#f1f5f9;--dim:#94a3b8;--stroke:rgba(148,163,184,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -25,10 +39,26 @@ a:hover{text-decoration:underline}
 .card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
 .card p{margin-bottom:12px;font-size:.9rem}
 .card .mail{font-family:ui-monospace,monospace;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
+
+/* Accessibility */
+.skip-link{position:absolute;top:-100%;left:16px;z-index:2000;padding:10px 18px;border-radius:10px;background:#111827;color:#f1f5f9;font-size:.85rem;text-decoration:none}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid #2563eb;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Kilbeans",
+  "url": "https://kilbeans.me/contact.html",
+  "isPartOf": { "@id": "https://kilbeans.me/#website" }
+}
+</script>
 </head>
 <body>
-<div class="wrap">
+<a class="skip-link" href="#content">Skip to main content</a>
+<div class="wrap" id="content" tabindex="-1">
 <a href="/" class="back">← Back to Home</a>
 <div class="label">Contact</div>
 <h1>Talk to us. <span>We actually reply.</span></h1>

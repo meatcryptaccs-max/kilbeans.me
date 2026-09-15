@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Kilbeans Infrastructure</title>
+<meta name="description" content="About Kilbeans — the encrypted, local-first campus ecosystem with ISP-grade Wi-Fi routing, zero ad trackers, and end-to-end protected communication.">
+<meta name="theme-color" content="#020617">
+<link rel="icon" href="/assets/logo.png" type="image/png">
+<link rel="canonical" href="https://kilbeans.me/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kilbeans">
+<meta property="og:title" content="About | Kilbeans Infrastructure">
+<meta property="og:description" content="The encrypted, local-first campus ecosystem with ISP-grade Wi-Fi routing and zero ad trackers.">
+<meta property="og:url" content="https://kilbeans.me/about.html">
+<meta property="og:image" content="https://kilbeans.me/assets/logo.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About | Kilbeans Infrastructure">
+<meta name="twitter:description" content="The encrypted, local-first campus ecosystem with ISP-grade Wi-Fi routing and zero ad trackers.">
 <style>
 :root {
   --primary: #2563eb;
@@ -375,11 +389,41 @@ a:hover {
   .founder-avatar { width: 52px; height: 52px; font-size: 1.1rem; }
   .stats { grid-template-columns: 1fr 1fr; }
 }
+
+/* Accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 2000;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #111827;
+  color: #f1f5f9;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.skip-link:focus { top: 16px; }
+:focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; scroll-behavior: auto !important; }
+}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Kilbeans Infrastructure",
+  "url": "https://kilbeans.me/about.html",
+  "isPartOf": { "@id": "https://kilbeans.me/#website" }
+}
+</script>
 </head>
 <body>
 
-<div class="wrap">
+<a class="skip-link" href="#content">Skip to main content</a>
+
+<div class="wrap" id="content" tabindex="-1">
   <a href="/" class="back">← System Overview</a>
   
   <div class="badge">Ecosystem Architecture</div>

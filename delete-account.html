@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Account - Kilbeans</title>
+    <meta name="description" content="Delete your Kilbeans account — request permanent deactivation, verify with a one-time code, and understand the 30-day data purge window.">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="canonical" href="https://kilbeans.me/delete-account.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kilbeans">
+    <meta property="og:title" content="Delete Account - Kilbeans">
+    <meta property="og:description" content="Request permanent deletion of your Kilbeans account and data.">
+    <meta property="og:url" content="https://kilbeans.me/delete-account.html">
+    <meta property="og:image" content="https://kilbeans.me/assets/logo.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Delete Account - Kilbeans">
+    <meta name="twitter:description" content="Request permanent deletion of your Kilbeans account and data.">
     <style>
         :root {
             --primary: #3b82f6; /* Premium Blue */
@@ -130,11 +145,32 @@
 
         /* Skeleton loader effect for buttons during fetch */
         .loading { opacity: 0.7; pointer-events: none; }
+
+        /* Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 16px;
+            z-index: 2000;
+            padding: 10px 18px;
+            border-radius: 10px;
+            background: rgba(17, 24, 39, 0.9);
+            color: #f1f5f9;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .skip-link:focus { top: 16px; }
+        :focus-visible { outline: 2px solid #3b82f6; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; scroll-behavior: auto !important; }
+        }
     </style>
 </head>
 <body>
 
-<div class="delete-container">
+<a class="skip-link" href="#content">Skip to main content</a>
+
+<div class="delete-container" id="content" tabindex="-1">
     <h1>Delete Kilbeans Account</h1>
     
     <div class="warning-box">
@@ -148,7 +184,7 @@
         <form id="requestForm">
             <div class="form-group">
                 <label for="email">Account Email</label>
-                <input type="email" id="email" placeholder="name@email.com" required>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="name@email.com" required>
             </div>
             <div class="form-group">
                 <label for="reason">Why are you leaving? (Optional)</label>
@@ -165,7 +201,7 @@
         <form id="verifyForm">
             <div class="form-group">
                 <label for="otp">6-Digit Verification Code</label>
-                <input type="text" id="otp" maxlength="6" pattern="\d{6}" placeholder="000000" style="text-align: center; letter-spacing: 8px; font-weight: bold;" required>
+                <input type="text" id="otp" name="otp" maxlength="6" pattern="\d{6}" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" style="text-align: center; letter-spacing: 8px; font-weight: bold;" required>
             </div>
             <button type="submit" class="btn-delete">Confirm Account Deletion</button>
         </form>

@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gideon Keter — Lead Systems Architect & Developer</title>
+    <meta name="description" content="Gideon Keter — Lead Systems Architect & Developer of Kilbeans. Systems engineering, ISP Wi-Fi infrastructure, and mobile-first social platform architecture.">
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="canonical" href="https://kilbeans.me/gideonketer.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Kilbeans">
+    <meta property="og:title" content="Gideon Keter — Lead Systems Architect & Developer">
+    <meta property="og:description" content="Systems engineering, ISP Wi-Fi infrastructure, and mobile-first social platform architecture.">
+    <meta property="og:url" content="https://kilbeans.me/gideonketer.html">
+    <meta property="og:image" content="https://kilbeans.me/assets/logo.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Gideon Keter — Lead Systems Architect & Developer">
+    <meta name="twitter:description" content="Systems engineering, ISP Wi-Fi infrastructure, and mobile-first social platform architecture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -403,12 +417,47 @@
             .nav-links { display: none; }
             .hero { padding-top: 130px; }
         }
+
+        /* Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 16px;
+            z-index: 2000;
+            padding: 10px 18px;
+            border-radius: 10px;
+            background: #111827;
+            color: #f1f5f9;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .skip-link:focus { top: 16px; }
+        :focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; scroll-behavior: auto !important; }
+        }
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gideon Keter",
+  "jobTitle": "Lead Systems Engineer & Founder",
+  "url": "https://kilbeans.me/gideonketer.html",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Kilbeans",
+    "url": "https://kilbeans.me/"
+  }
+}
+</script>
 </head>
 <body>
 
+    <a class="skip-link" href="#content">Skip to main content</a>
+
     <!-- Header Navigation -->
-    <nav>
+    <nav aria-label="Primary">
         <div class="nav-inner">
             <a href="#" class="brand-logo">
                 <div class="logo-icon">
@@ -432,7 +481,7 @@
         </div>
     </nav>
 
-    <div class="wrap">
+    <div class="wrap" id="content" tabindex="-1">
         
         <!-- Hero Section -->
         <header class="hero" id="about">

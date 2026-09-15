@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - Kilbeans</title>
+    <meta name="description" content="Kilbeans Terms of Service — the rules governing your use of the platform, including acceptable use, intellectual property, liability limits, and dispute resolution.">
+    <meta name="theme-color" content="#f8fafc">
+    <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="canonical" href="https://kilbeans.me/terms.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kilbeans">
+    <meta property="og:title" content="Terms of Service - Kilbeans">
+    <meta property="og:description" content="Rules governing your use of Kilbeans — acceptable use, IP, liability limits, and dispute resolution.">
+    <meta property="og:url" content="https://kilbeans.me/terms.html">
+    <meta property="og:image" content="https://kilbeans.me/assets/logo.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Terms of Service - Kilbeans">
+    <meta name="twitter:description" content="Rules governing your use of Kilbeans — acceptable use, IP, liability limits, and dispute resolution.">
     <style>
         :root {
             --primary: #2563eb;
@@ -89,12 +103,33 @@
             .terms-container { padding: 25px 20px; }
             h1 { font-size: 1.75rem; }
         }
+
+        /* Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 16px;
+            z-index: 2000;
+            padding: 10px 18px;
+            border-radius: 10px;
+            background: #111827;
+            color: #f1f5f9;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .skip-link:focus { top: 16px; }
+        :focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; scroll-behavior: auto !important; }
+        }
     </style>
 </head>
 <body>
 
+<a class="skip-link" href="#content">Skip to main content</a>
+
 <div class="wrapper">
-    <article class="terms-container">
+    <article class="terms-container" id="content" tabindex="-1">
         <header>
             <h1>Terms of Service</h1>
             <span class="effective-date">Last Updated: April 19, 2026</span>
