@@ -335,11 +335,9 @@
 </div>
 <script>
   (function () {
-    // Where submissions go. Default: FormSubmit.co forwards to support@kilbeans.com
-    // (you get a one-time "confirm your email" mail on the first submission).
-    // To use your own backend instead, just point at your API endpoint, e.g.:
-    //   const BETA_ENDPOINT = 'https://node-b49a.onrender.com/v1/auth/join-testing';
-    const BETA_ENDPOINT = 'https://formsubmit.co/ajax/support@kilbeans.com';
+    // Production API base (matches EXPO_PUBLIC_API_URL) — endpoint defined in
+    // server.js + routes/betaRoutes.js (controllers/beta).
+    const BETA_ENDPOINT = 'https://api.kilbeans.me/api/v1/beta/join';
 
     const form = document.getElementById('betaForm');
     const status = document.getElementById('status');
@@ -366,9 +364,7 @@
       const payload = {
         name: form.elements.name.value.trim(),
         email: email,
-        device: form.elements.device.value.trim(),
-        _subject: '[Kilbeans Beta] New tester: ' + email,
-        _captcha: 'false'
+        device: form.elements.device.value.trim()
       };
 
       btn.disabled = true;
