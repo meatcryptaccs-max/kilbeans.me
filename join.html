@@ -317,3 +317,92 @@
 
   <p class="fineprint">Your details are used only for your app account and college notices on WhatsApp. We never share your data.</p>
 </div>
+
+<script>
+  (function () {
+    // Join endpoint — mounted at /api/v1/join in Node/Server
+    // (server.js → routes/enrollmentRoutes.js → enrollmentController.join).
+    // It writes to the `enrollments` Firestore collection, which is the same
+    // list the admin panel's Enrollments screen reads.
+    const JOIN_ENDPOINT = 'https://api.kilbeans.me/api/v1/join';
+
+    const form = document.getElementById('joinForm');
+    const status = document.getElementById('status');
+    const btn = document.getElementById('joinBtn');
+
+    function show(message, ok) {
+      status.hidden = false;
+      status.textContent = message;
+      status.dataset.kind = ok ? 'ok' : 'err';
+    }
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      // Honeypot: a bot that fills the hidden field gets silently dropped.
+      if (form.elements.honey.value.trim()) return;
+
+      // The form is `novalidate`, so run the native checks ourselves.
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const payload = {
+        name: form.elements.name.value.trim(),
+        email: form.elements.email.value.trim(),
+        phone: form.elements.phone.value.trim(),
+        department: form.elements.department.value
+      };
+
+      const originalLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Saving…';
+      status.hidden = true;
+
+      try {
+        const res = await fetch(JOIN_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        // Tolerate non-JSON error pages (proxies, 502s, …).
+        let data = null;
+        try { data = await res.json(); } catch (_) { data = null; }
+
+        if (!res.ok) {
+          if (res.status === 429) {
+            throw new Error('Too many attempts just now — please wait a minute and try again.');
+          }
+          throw new Error(
+            (data && (data.error || data.message)) ||
+            'Something went wrong (HTTP ' + res.status + ').'
+          );
+        }
+
+        // The API answers 200 for a brand-new signup AND for a duplicate
+        // (already on file), so both cases land here as a success.
+        show(
+          (data && data.message) ||
+            "You're all set! Your details have been saved — we'll be in touch on WhatsApp.",
+          true
+        );
+        form.reset();
+      } catch (err) {
+        // fetch() throws a TypeError when the request never reached the server.
+        show(
+          err instanceof TypeError
+            ? 'We could not reach the server. Please check your connection and try again.'
+            : (err.message || 'Something went wrong. Please try again.'),
+          false
+        );
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
