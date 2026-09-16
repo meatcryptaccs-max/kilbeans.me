@@ -23,90 +23,93 @@
     --primary: #2563eb;
     --primary-bright: #3b82f6;
     --accent: #22d3ee;
-    --accent-2: #60a5fa;
     --bg: #020617;
+    --surface: #0b1226;
     --text: #f1f5f9;
     --dim: #94a3b8;
     --mute: #64748b;
-    --stroke: rgba(148, 163, 184, 0.12);
-    --stroke-hi: rgba(96, 165, 250, 0.35);
-    --card: rgba(15, 23, 42, 0.55);
-    --input-bg: #0b1226;
+    --stroke: rgba(148, 163, 184, 0.14);
+    --stroke-hi: rgba(96, 165, 250, 0.4);
     --ok: #22c55e;
     --err: #f87171;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.7;
-    min-height: 100vh;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
   }
 
-  /* Aurora background, same as the rest of the site */
+  /* Subtle aurora, native-app style */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(700px 500px at 15% 5%, rgba(37, 99, 235, 0.2), transparent 60%),
-      radial-gradient(600px 400px at 85% 10%, rgba(34, 211, 238, 0.15), transparent 60%),
-      radial-gradient(900px 700px at 50% 100%, rgba(37, 99, 235, 0.08), transparent 65%);
+      radial-gradient(520px 400px at 50% -10%, rgba(37, 99, 235, 0.22), transparent 65%),
+      radial-gradient(420px 320px at 90% 110%, rgba(34, 211, 238, 0.12), transparent 60%);
   }
 
-  .wrap {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 100px 24px 80px;
+  /* Single-screen layout: everything centered, fits one viewport */
+  .screen {
+    width: 100%;
+    max-width: 420px;
+    min-height: 100dvh;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .back {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    color: var(--dim);
+    align-self: flex-start;
+    gap: 6px;
+    color: var(--mute);
     text-decoration: none;
-    font-family: ui-monospace, monospace;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 48px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: 1px solid var(--stroke);
-    transition: 0.25s;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    transition: 0.2s;
   }
   .back:hover { color: var(--text); background: rgba(96, 165, 250, 0.08); }
 
-  .label {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
+  /* Header */
+  .brand {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-  }
-  .label::before {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 900;
-    letter-spacing: -1.5px;
-    line-height: 1.1;
+    text-align: center;
     margin-bottom: 20px;
+  }
+  .logo-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 10px 30px -8px rgba(37, 99, 235, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 1.45rem;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1.1;
   }
   h1 span {
     background: linear-gradient(120deg, #60a5fa, #22d3ee);
@@ -114,109 +117,95 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
-  .lead {
+  .tagline {
     color: var(--dim);
-    margin-bottom: 32px;
-    font-size: 1.02rem;
-    max-width: 640px;
-  }
-  .lead strong { color: var(--text); font-weight: 600; }
-
-  .card {
-    background: var(--card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--stroke);
-    border-radius: 20px;
-    padding: 32px 28px;
-    margin-bottom: 40px;
+    font-size: 0.84rem;
+    margin-top: 8px;
+    max-width: 320px;
+    line-height: 1.55;
   }
 
-  .field { margin-bottom: 20px; }
-
-  label {
+  /* Compact native form */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .field label {
     display: block;
-    font-weight: 500;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
+    font-weight: 600;
     color: var(--dim);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
   }
-  label .hint { color: var(--mute); font-weight: 400; }
 
   input,
   select {
     width: 100%;
-    padding: 14px 16px;
-    background-color: var(--input-bg);
-    border: 1px solid var(--stroke-hi);
-    border-radius: 10px;
-    font-size: 1rem;
-    color: var(--text);
-    outline: none;
-    transition: 0.25s;
+    height: 44px;
+    padding: 0 14px;
+    font-size: 0.95rem;
     font-family: inherit;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--stroke-hi);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
   input::placeholder { color: var(--mute); }
   input:focus,
   select:focus {
     border-color: var(--primary-bright);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.22);
   }
 
-  /* Native dropdown — collapsible by default, styled to match the dark theme */
+  /* Native dropdown — collapsible, dark themed */
   select {
     appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
+    padding-right: 40px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 16px center;
+    background-position: right 14px center;
     background-size: 16px;
-    padding-right: 44px;
   }
-  select option {
-    background-color: #0b1226;
-    color: var(--text);
-  }
+  select option { background-color: #0b1226; color: var(--text); }
 
   .field-note {
-    margin-top: 6px;
-    font-size: 0.78rem;
+    margin-top: 5px;
+    font-size: 0.72rem;
     color: var(--mute);
   }
 
   .btn {
-    width: 100%;
-    padding: 15px 28px;
+    height: 48px;
     border: none;
-    border-radius: 100px;
+    border-radius: 14px;
     background: linear-gradient(135deg, var(--primary), var(--primary-bright));
     color: #fff;
     font-size: 0.95rem;
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
-    transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    margin-top: 4px;
+    box-shadow: 0 14px 30px -10px rgba(37, 99, 235, 0.6);
+    transition: transform 0.15s, opacity 0.15s;
   }
-  .btn:hover { transform: translateY(-2px); }
-  .btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+  .btn:active { transform: scale(0.98); }
+  .btn:disabled { opacity: 0.65; }
 
-  /* Hidden honeypot field for spam bots */
-  .hp {
-    position: absolute;
-    left: -9999px;
-    opacity: 0;
-    height: 0;
-    width: 0;
-  }
+  /* Hidden honeypot for spam bots */
+  .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
 
   .status {
-    margin-top: 16px;
-    padding: 14px 16px;
+    margin-top: 4px;
+    padding: 10px 12px;
     border-radius: 12px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     border: 1px solid transparent;
   }
   .status[hidden] { display: none; }
@@ -231,70 +220,48 @@
     border-color: rgba(248, 113, 113, 0.25);
   }
 
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .step {
-    padding: 22px 20px;
-    background: var(--card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--stroke);
-    border-radius: 16px;
-  }
-  .step-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(34, 211, 238, 0.15));
-    border: 1px solid var(--stroke-hi);
-    color: var(--accent-2);
-    font-family: ui-monospace, monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
-  .step p { font-size: 0.82rem; color: var(--dim); line-height: 1.55; }
-
-  .privacy {
-    font-family: ui-monospace, monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.5px;
-    color: var(--mute);
+  .fineprint {
+    margin-top: 18px;
     text-align: center;
+    font-size: 0.68rem;
+    color: var(--mute);
+    line-height: 1.5;
   }
 
   /* Accessibility */
   .skip-link {
     position: absolute;
     top: -100%;
-    left: 16px;
+    left: 12px;
     z-index: 2000;
-    padding: 10px 18px;
-    border-radius: 10px;
+    padding: 8px 14px;
+    border-radius: 8px;
     background: #111827;
     color: #f1f5f9;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-decoration: none;
+    font-family: inherit;
   }
-  .skip-link:focus { top: 16px; }
-  :focus-visible { outline: 2px solid var(--primary-bright); outline-offset: 3px; }
+  .skip-link:focus { top: 12px; }
+  :focus-visible { outline: 2px solid var(--primary-bright); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; scroll-behavior: auto !important; }
   }
 
-  @media (max-width: 640px) {
-    .wrap { padding: 70px 16px 60px; }
-    .back { margin-bottom: 32px; }
-    .card { padding: 26px 20px; }
-    .steps { grid-template-columns: 1fr; }
+  /* Short screens / small phones: tighten to keep one-screen fit */
+  @media (max-height: 720px) {
+    .screen { padding-top: 14px; padding-bottom: 14px; }
+    .brand { margin-bottom: 14px; }
+    .logo-mark { width: 40px; height: 40px; border-radius: 12px; margin-bottom: 8px; }
+    h1 { font-size: 1.25rem; }
+    .tagline { font-size: 0.78rem; margin-top: 6px; }
+    .form { gap: 9px; }
+    input, select { height: 40px; font-size: 0.9rem; }
+    .btn { height: 44px; font-size: 0.9rem; }
+    .fineprint { margin-top: 12px; }
+  }
+  @media (max-width: 380px) {
+    .screen { padding-left: 14px; padding-right: 14px; }
   }
 </style>
 </head>
@@ -302,139 +269,51 @@
 
 <a class="skip-link" href="#content">Skip to main content</a>
 
-<div class="wrap" id="content" tabindex="-1">
-  <a href="/" class="back">← Back to Home</a>
+<div class="screen" id="content" tabindex="-1">
+  <a href="/" class="back">← Home</a>
 
-  <div class="label">AIC Litein Medical Training College</div>
-  <h1>Your college, <span>in one app.</span></h1>
-  <p class="lead">
-    Kilbeans is the campus app for <strong>AIC Litein Medical Training College</strong>.
-    Connect with your department, keep up with class announcements, and stay
-    plugged into campus life. Enter your details below and we'll get your account set up.
-  </p>
+  <header class="brand">
+    <div class="logo-mark"></div>
+    <h1>AIC Litein <span>MTC</span></h1>
+    <p class="tagline">The campus app for AIC Litein Medical Training College. Set up your account — it only takes a minute.</p>
+  </header>
 
-  <div class="card">
-    <form id="joinForm" novalidate>
-      <div class="field">
-        <label for="name">Full name</label>
-        <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Jane Chemtai" required>
-      </div>
-
-      <div class="field">
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
-      </div>
-
-      <div class="field">
-        <label for="phone">WhatsApp phone number</label>
-        <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+254 712 345 678" required>
-        <p class="field-note">We'll send your account details to this number on WhatsApp.</p>
-      </div>
-
-      <div class="field">
-        <label for="department">Department <span class="hint">(select yours)</span></label>
-        <select id="department" name="department" required>
-          <option value="" disabled selected>Choose your department</option>
-          <option value="Nursing">Nursing</option>
-          <option value="Clinical Medicine">Clinical Medicine</option>
-          <option value="Medical Laboratory">Medical Laboratory</option>
-          <option value="Radiology / Medical Imaging">Radiology / Medical Imaging</option>
-          <option value="Peri-operative Nursing">Peri-operative Nursing</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-
-      <input type="text" class="hp" name="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <button type="submit" class="btn" id="joinBtn">Get My Account</button>
-
-      <div id="status" class="status" role="status" aria-live="polite" hidden></div>
-    </form>
-  </div>
-
-  <div class="steps">
-    <div class="step">
-      <span class="step-num">1</span>
-      <h3>We set up your account</h3>
-      <p>We confirm your details and create your place in the college app.</p>
+  <form id="joinForm" class="form" novalidate>
+    <div class="field">
+      <label for="name">Full name</label>
+      <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Jane Chemtai" required>
     </div>
-    <div class="step">
-      <span class="step-num">2</span>
-      <h3>Watch WhatsApp</h3>
-      <p>Your account details arrive right here, on your WhatsApp.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">3</span>
-      <h3>You're in</h3>
-      <p>Open Kilbeans, sign in, and connect with your campus community.</p>
-    </div>
-  </div>
 
-  <p class="privacy">Your details are used only to set up your Kilbeans account and for college announcements. We never sell or share your data.</p>
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+    </div>
+
+    <div class="field">
+      <label for="phone">WhatsApp number</label>
+      <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+254 712 345 678" required>
+      <p class="field-note">We'll send your account details to this number.</p>
+    </div>
+
+    <div class="field">
+      <label for="department">Department</label>
+      <select id="department" name="department" required>
+        <option value="" disabled selected>Choose your department</option>
+        <option value="Nursing">Nursing</option>
+        <option value="Clinical Medicine">Clinical Medicine</option>
+        <option value="Medical Laboratory">Medical Laboratory</option>
+        <option value="Radiology / Medical Imaging">Radiology / Medical Imaging</option>
+        <option value="Peri-operative Nursing">Peri-operative Nursing</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <input type="text" class="hp" name="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <button type="submit" class="btn" id="joinBtn">Get My Account</button>
+
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+  </form>
+
+  <p class="fineprint">Your details are used only for your app account and college notices on WhatsApp. We never share your data.</p>
 </div>
-
-<script>
-  (function () {
-    // API base auto-selects the right scheme:
-    //  - Page served over HTTPS (production / kilbeans.me)  → https prod API
-    //  - Page served over HTTP (local dev)                  → http dev server
-    // (Use http:// for the dev server — it is plain HTTP, not HTTPS.)
-    const API_BASE =
-      window.location.protocol === 'https:'
-        ? 'https://api.kilbeans.me'
-        : 'http://10.194.172.185:8080';
-    const JOIN_ENDPOINT = API_BASE + '/api/v1/join';
-
-    const form = document.getElementById('joinForm');
-    const status = document.getElementById('status');
-    const btn = document.getElementById('joinBtn');
-
-    function show(message, ok) {
-      status.hidden = false;
-      status.textContent = message;
-      status.dataset.kind = ok ? 'ok' : 'err';
-    }
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-
-      // Honeypot: if a bot filled the hidden field, silently drop the request.
-      if (form.elements.honey.value.trim()) return;
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      const payload = {
-        name: form.elements.name.value.trim(),
-        email: form.elements.email.value.trim(),
-        phone: form.elements.phone.value.trim(),
-        department: form.elements.department.value
-      };
-
-      btn.disabled = true;
-      btn.textContent = 'Setting up…';
-      status.hidden = true;
-
-      try {
-        const res = await fetch(JOIN_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error('Bad status ' + res.status);
-        show("You're all set! Watch your WhatsApp — your account details are on the way.", true);
-        form.reset();
-      } catch (err) {
-        show('Something went wrong. Please try again, or contact the campus admin.', false);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Get My Account';
-      }
-    });
-  })();
-</script>
-
-</body>
-</html>
