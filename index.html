@@ -380,6 +380,15 @@
     display: inline-flex;
     margin-bottom: 40px;
   }
+  .cta-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .cta-row .cta-wrap { margin-bottom: 0; }
   .btn {
     position: relative;
     padding: 15px 28px;
@@ -1421,11 +1430,18 @@
     Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging.
   </p>
 
-  <div class="cta-wrap">
-    <div class="pulse-ring"></div>
-    <div class="pulse-ring delay"></div>
-    <a href="/beta.html" class="btn">
-      Get Kilbeans for Android
+  <div class="cta-row">
+    <div class="cta-wrap">
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring delay"></div>
+      <a href="/join.html" class="btn">
+        Get Kilbeans for Android
+        <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+      </a>
+    </div>
+
+    <a href="/join.html" class="btn secondary">
+      Get AIC Litein MTC Account
       <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
     </a>
   </div>
@@ -1766,7 +1782,7 @@
       <ul>
         <li><a href="#features">Technology</a></li>
         <li><a href="/about.html">About</a></li>
-        <li><a href="/beta.html">Join Closed Beta</a></li>
+        <li><a href="/join.html">Get Kilbeans</a></li>
         <li><a href="#">Changelog</a></li>
         <li><a href="#">Roadmap</a></li>
       </ul>

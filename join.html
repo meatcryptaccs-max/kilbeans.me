@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Join the Kilbeans Closed Beta</title>
-<meta name="description" content="Join the Kilbeans closed beta on Google Play. Add your email and we'll invite you to the testing program.">
+<title>Get Kilbeans | AIC Litein Medical Training College</title>
+<meta name="description" content="Join Kilbeans — the campus app used at AIC Litein Medical Training College. Connect with your department, classmates, and campus announcements.">
 <meta name="theme-color" content="#020617">
 <link rel="icon" href="/assets/logo.png" type="image/png">
-<link rel="canonical" href="https://kilbeans.me/beta.html">
+<link rel="canonical" href="https://kilbeans.me/join.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kilbeans">
-<meta property="og:title" content="Join the Kilbeans Closed Beta">
-<meta property="og:description" content="Get early access to Kilbeans — join the closed beta on Google Play.">
-<meta property="og:url" content="https://kilbeans.me/beta.html">
+<meta property="og:title" content="Get Kilbeans | AIC Litein Medical Training College">
+<meta property="og:description" content="Join Kilbeans — the campus app at AIC Litein Medical Training College.">
+<meta property="og:url" content="https://kilbeans.me/join.html">
 <meta property="og:image" content="https://kilbeans.me/assets/logo.png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Join the Kilbeans Closed Beta">
-<meta name="twitter:description" content="Get early access to Kilbeans — join the closed beta on Google Play.">
+<meta name="twitter:title" content="Get Kilbeans | AIC Litein Medical Training College">
+<meta name="twitter:description" content="Join Kilbeans — the campus app at AIC Litein Medical Training College.">
 <style>
   :root {
     --primary: #2563eb;
@@ -119,7 +119,7 @@
     color: var(--dim);
     margin-bottom: 32px;
     font-size: 1.02rem;
-    max-width: 620px;
+    max-width: 640px;
   }
   .lead strong { color: var(--text); font-weight: 600; }
 
@@ -142,9 +142,10 @@
     font-size: 0.85rem;
     color: var(--dim);
   }
-  label .opt { color: var(--mute); font-weight: 400; }
+  label .hint { color: var(--mute); font-weight: 400; }
 
-  input {
+  input,
+  select {
     width: 100%;
     padding: 14px 16px;
     background-color: var(--input-bg);
@@ -154,11 +155,35 @@
     color: var(--text);
     outline: none;
     transition: 0.25s;
+    font-family: inherit;
   }
   input::placeholder { color: var(--mute); }
-  input:focus {
+  input:focus,
+  select:focus {
     border-color: var(--primary-bright);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Native dropdown — collapsible by default, styled to match the dark theme */
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 44px;
+  }
+  select option {
+    background-color: #0b1226;
+    color: var(--text);
+  }
+
+  .field-note {
+    margin-top: 6px;
+    font-size: 0.78rem;
+    color: var(--mute);
   }
 
   .btn {
@@ -280,34 +305,48 @@
 <div class="wrap" id="content" tabindex="-1">
   <a href="/" class="back">← Back to Home</a>
 
-  <div class="label">Closed Testing</div>
-  <h1>Join the <span>Closed Beta.</span></h1>
+  <div class="label">AIC Litein Medical Training College</div>
+  <h1>Your college, <span>in one app.</span></h1>
   <p class="lead">
-    Kilbeans is in its final testing phase before campus-wide launch.
-    Add your email below and we'll add you to the Google Play testing team —
-    you'll get an opt-in invite link and can start testing right away.
+    Kilbeans is the campus app for <strong>AIC Litein Medical Training College</strong>.
+    Connect with your department, keep up with class announcements, and stay
+    plugged into campus life. Enter your details below and we'll get your account set up.
   </p>
 
   <div class="card">
-    <form id="betaForm" novalidate>
+    <form id="joinForm" novalidate>
       <div class="field">
-        <label for="name">Name <span class="opt">(optional)</span></label>
-        <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Jane Chemtai" required>
       </div>
 
       <div class="field">
         <label for="email">Email address</label>
-        <input type="email" id="email" name="email" autocomplete="email" placeholder="you@campus.edu" required>
+        <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
       </div>
 
       <div class="field">
-        <label for="device">Device / Android version <span class="opt">(optional)</span></label>
-        <input type="text" id="device" name="device" placeholder="e.g. Pixel 7 · Android 14">
+        <label for="phone">WhatsApp phone number</label>
+        <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+254 712 345 678" required>
+        <p class="field-note">We'll send your account details to this number on WhatsApp.</p>
+      </div>
+
+      <div class="field">
+        <label for="department">Department <span class="hint">(select yours)</span></label>
+        <select id="department" name="department" required>
+          <option value="" disabled selected>Choose your department</option>
+          <option value="Nursing">Nursing</option>
+          <option value="Clinical Medicine">Clinical Medicine</option>
+          <option value="Medical Laboratory">Medical Laboratory</option>
+          <option value="Radiology / Medical Imaging">Radiology / Medical Imaging</option>
+          <option value="Peri-operative Nursing">Peri-operative Nursing</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
 
       <input type="text" class="hp" name="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <button type="submit" class="btn" id="betaBtn">Request Beta Invite</button>
+      <button type="submit" class="btn" id="joinBtn">Get My Account</button>
 
       <div id="status" class="status" role="status" aria-live="polite" hidden></div>
     </form>
@@ -316,32 +355,39 @@
   <div class="steps">
     <div class="step">
       <span class="step-num">1</span>
-      <h3>We add you</h3>
-      <p>Your email goes onto the closed testers list in the Google Play Console.</p>
+      <h3>We set up your account</h3>
+      <p>We confirm your details and create your place in the college app.</p>
     </div>
     <div class="step">
       <span class="step-num">2</span>
-      <h3>You get the invite</h3>
-      <p>We email you the opt-in link. Tap it and accept the invitation.</p>
+      <h3>Watch WhatsApp</h3>
+      <p>Your account details arrive right here, on your WhatsApp.</p>
     </div>
     <div class="step">
       <span class="step-num">3</span>
-      <h3>Install &amp; test</h3>
-      <p>The app shows up on your Google Play page. Install it and tell us what you think.</p>
+      <h3>You're in</h3>
+      <p>Open Kilbeans, sign in, and connect with your campus community.</p>
     </div>
   </div>
 
-  <p class="privacy">We'll only use your email to invite you to the closed test. No spam, no newsletters, no tracking.</p>
+  <p class="privacy">Your details are used only to set up your Kilbeans account and for college announcements. We never sell or share your data.</p>
 </div>
+
 <script>
   (function () {
-    // Production API base (matches EXPO_PUBLIC_API_URL) — endpoint defined in
-    // server.js + routes/betaRoutes.js (controllers/beta).
-    const BETA_ENDPOINT = 'https://api.kilbeans.me/api/v1/beta/join';
+    // API base auto-selects the right scheme:
+    //  - Page served over HTTPS (production / kilbeans.me)  → https prod API
+    //  - Page served over HTTP (local dev)                  → http dev server
+    // (Use http:// for the dev server — it is plain HTTP, not HTTPS.)
+    const API_BASE =
+      window.location.protocol === 'https:'
+        ? 'https://api.kilbeans.me'
+        : 'http://10.194.172.185:8080';
+    const JOIN_ENDPOINT = API_BASE + '/api/v1/join';
 
-    const form = document.getElementById('betaForm');
+    const form = document.getElementById('joinForm');
     const status = document.getElementById('status');
-    const btn = document.getElementById('betaBtn');
+    const btn = document.getElementById('joinBtn');
 
     function show(message, ok) {
       status.hidden = false;
@@ -360,31 +406,31 @@
         return;
       }
 
-      const email = form.elements.email.value.trim();
       const payload = {
         name: form.elements.name.value.trim(),
-        email: email,
-        device: form.elements.device.value.trim()
+        email: form.elements.email.value.trim(),
+        phone: form.elements.phone.value.trim(),
+        department: form.elements.department.value
       };
 
       btn.disabled = true;
-      btn.textContent = 'Sending…';
+      btn.textContent = 'Setting up…';
       status.hidden = true;
 
       try {
-        const res = await fetch(BETA_ENDPOINT, {
+        const res = await fetch(JOIN_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
         });
         if (!res.ok) throw new Error('Bad status ' + res.status);
-        show("You're on the list! Check your inbox — the Google Play invite is on the way.", true);
+        show("You're all set! Watch your WhatsApp — your account details are on the way.", true);
         form.reset();
       } catch (err) {
-        show('Something went wrong. Please try again, or email us directly at support@kilbeans.com.', false);
+        show('Something went wrong. Please try again, or contact the campus admin.', false);
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Request Beta Invite';
+        btn.textContent = 'Get My Account';
       }
     });
   })();
