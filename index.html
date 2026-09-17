@@ -20,9 +20,11 @@
 <meta name="twitter:description" content="Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=70">
-<script src="https://unpkg.com/lucide@1.46.0" defer></script>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="dns-prefetch" href="https://images.unsplash.com">
+<script src="https://unpkg.com/lucide@1.46.0" defer fetchpriority="low"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1358,6 +1360,29 @@
 
 <a class="skip-link" href="#top">Skip to main content</a>
 
+<style>
+  /* S26 intake: "Get AIC Litein MTC Account" is now THE single dominant action. */
+  .cta-row .btn-dominant {
+    padding: 19px 42px;
+    font-size: 1.02rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, var(--primary-bright) 0%, var(--primary) 100%);
+    box-shadow:
+      0 0 0 1px rgba(96, 165, 250, 0.5),
+      0 26px 55px -12px rgba(37, 99, 235, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+  .cta-row .btn-dominant:hover { transform: translateY(-2px); }
+  @media (max-width: 640px) {
+    .cta-row .btn-dominant {
+      width: 100%;
+      justify-content: center;
+      padding: 17px 24px;
+      font-size: 0.95rem;
+    }
+  }
+</style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
 <div class="bg-grid"></div>
@@ -1420,30 +1445,28 @@
 <header class="hero" id="top">
   <div class="status-badge">
     <span class="status-dot"></span>
-    v2.0 · Now in Private Beta
+    S26 · Now onboarding at AIC Litein MTC
   </div>
 
-  <h1>Human Logic. <br><span>Digital Sovereign.</span></h1>
+  <h1>Welcome, S26. <br><span>Your campus starts here.</span></h1>
 
   <p class="lead">
-    The premium campus ecosystem for creators who value <strong>depth over clicks</strong>.
-    Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging.
+    A new class is joining <strong>AIC Litein MTC</strong> — and Kilbeans is built for it.
+    One feed for your cohort, encrypted private Sectors for your study groups, and
+    messaging that never sells your attention.
   </p>
 
   <div class="cta-row">
     <div class="cta-wrap">
       <div class="pulse-ring"></div>
       <div class="pulse-ring delay"></div>
-      <a href="/join.html" class="btn">
-        Get Kilbeans for Android
+      <a href="/join.html" class="btn btn-dominant">
+        Get AIC Litein MTC Account
         <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
       </a>
     </div>
-
-    <a href="/join.html" class="btn secondary">
-      Get AIC Litein MTC Account
-      <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-    </a>
+    <!-- Android build intentionally hidden for now: the S26 intake onboards on web first.
+         Re-enable by restoring the "Get Kilbeans for Android" anchor here. -->
   </div>
 
   <div class="hero-meta">
@@ -1487,8 +1510,8 @@
         <div class="post-head">
           <div class="avatar-sm"></div>
           <div class="post-meta">
-            <div class="post-author">Klavy media</div>
-            <div class="post-handle">@klavymedia · <span class="post-time">8h</span></div>
+            <div class="post-author">Gideon Keter</div>
+            <div class="post-handle">@gideonketer · <span class="post-time">8h</span></div>
           </div>
           <i data-lucide="more-horizontal" style="width:14px;height:14px;color:#64748b;"></i>
         </div>
@@ -1509,8 +1532,8 @@
         <div class="post-head">
           <div class="avatar-sm"></div>
           <div class="post-meta">
-            <div class="post-author">Klavy media</div>
-            <div class="post-handle">@klavymedia · <span class="post-time">8h</span></div>
+            <div class="post-author">Gideon Keter</div>
+            <div class="post-handle">@gideonketer · <span class="post-time">8h</span></div>
           </div>
         </div>
         <div class="post-media">
@@ -1552,7 +1575,7 @@
       </div>
 
       <div class="app-header">
-        <span class="app-title plain">Klavy media</span>
+        <span class="app-title plain">Gideon Keter</span>
         <i data-lucide="menu" style="width:18px;height:18px;color:#94a3b8;"></i>
       </div>
 
@@ -1560,8 +1583,8 @@
         <div class="profile-avatar-ring">
           <div class="profile-avatar"></div>
         </div>
-        <div class="profile-name">Klavy media</div>
-        <div class="profile-handle">@klavymedia</div>
+        <div class="profile-name">Gideon Keter</div>
+        <div class="profile-handle">@gideonketer</div>
 
         <div class="profile-stats">
           <div class="stat"><span class="stat-num">0</span><span class="stat-label">Following</span></div>
