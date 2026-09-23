@@ -1,4 +1,23 @@
+# Kilbeans — https://kilbeans.me
+# Public brand, ownership, and platform pages are fully crawlable (including AI
+# discovery engines) so entity metadata stays verifiable in search and answers.
+
 User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://kilbeans.me/sitemap.xml

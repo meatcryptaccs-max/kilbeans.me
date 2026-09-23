@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Kilbeans logo">
+  <title>Kilbeans</title>
+  <desc>Kilbeans brand mark — rounded blue tile with the white Kilbeans speech-bean glyph.</desc>
+  <rect width="512" height="512" rx="140" fill="#2563EB"/>
+  <path d="M256 120C180 120 120 175 120 248C120 295 146 335 186 358L174 416L234 388C241 390 248 391 256 391C332 391 392 336 392 263C392 190 332 120 256 120Z" fill="#FFFFFF"/>
+  <path d="M190 295C227 258 285 258 322 295" stroke="#2563EB" stroke-width="26" stroke-linecap="round" fill="none"/>
+  <path d="M216 256C238 234 274 234 296 256" stroke="#2563EB" stroke-width="26" stroke-linecap="round" fill="none"/>
+  <circle cx="256" cy="326" r="16" fill="#2563EB"/>
+</svg>

@@ -3,21 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Kilbeans | Authentically Social</title>
-<meta name="description" content="Kilbeans — the premium campus ecosystem for creators who value depth over clicks. Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging.">
+<title>Kilbeans | Authentically Social &amp; Campus Infrastructure</title>
+<meta name="description" content="Kilbeans — the campus social ecosystem and micro-ISP utility owned by Kilbeans Ltd and architected by founder Gideon Keter. Encrypted messaging, honest feeds.">
+<meta name="author" content="Gideon Keter">
 <meta name="theme-color" content="#020617">
-<link rel="icon" href="/assets/logo.png" type="image/png">
+<link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/logo.png">
+<link rel="apple-touch-icon" href="/assets/logo.png">
 <link rel="canonical" href="https://kilbeans.me/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kilbeans">
-<meta property="og:title" content="Kilbeans | Authentically Social">
-<meta property="og:description" content="Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging.">
+<meta property="og:title" content="Kilbeans | Authentically Social &amp; Campus Infrastructure">
+<meta property="og:description" content="Owned by Kilbeans Ltd and architected by founder Gideon Keter — campus feeds, encrypted messaging, and micro-ISP Wi-Fi controls in one platform.">
 <meta property="og:url" content="https://kilbeans.me/">
-<meta property="og:image" content="https://kilbeans.me/assets/logo.png">
+<meta property="og:image" content="https://kilbeans.me/assets/og-cover.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kilbeans — campus social ecosystem and micro-ISP utility by Kilbeans Ltd">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kilbeans | Authentically Social">
-<meta name="twitter:description" content="Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kilbeans | Authentically Social &amp; Campus Infrastructure">
+<meta name="twitter:description" content="Campus social ecosystem and micro-ISP utility owned by Kilbeans Ltd, architected by founder Gideon Keter.">
+<meta name="twitter:image" content="https://kilbeans.me/assets/og-cover.png">
+<meta name="twitter:image:alt" content="Kilbeans — campus social ecosystem and micro-ISP utility">
+<!-- Brand preview card: for maximum-size WhatsApp / Telegram / X cards, upload a
+     1200x630 PNG to /assets/og-cover.png, then point og:image + twitter:image at it
+     and switch twitter:card to "summary_large_image". -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -34,51 +46,140 @@
       "@id": "https://kilbeans.me/#website",
       "url": "https://kilbeans.me/",
       "name": "Kilbeans",
-      "description": "The premium campus ecosystem for creators who value depth over clicks.",
+      "alternateName": "Kilbeans App",
+      "description": "Kilbeans is a localized campus ecosystem and micro-ISP utility owned by Kilbeans Ltd and architected by founder Gideon Keter.",
       "inLanguage": "en-US",
       "publisher": { "@id": "https://kilbeans.me/#organization" }
     },
     {
+      "@type": "WebPage",
+      "@id": "https://kilbeans.me/#webpage",
+      "url": "https://kilbeans.me/",
+      "name": "Kilbeans | Authentically Social & Campus Infrastructure",
+      "description": "Kilbeans — the campus social ecosystem and micro-ISP utility owned by Kilbeans Ltd and architected by founder Gideon Keter. Encrypted messaging, chronological feeds, micro-ISP hotspot controls.",
+      "isPartOf": { "@id": "https://kilbeans.me/#website" },
+      "about": [
+        { "@id": "https://kilbeans.me/#application" },
+        { "@id": "https://kilbeans.me/#organization" }
+      ],
+      "primaryTopic": { "@id": "https://kilbeans.me/#application" },
+      "inLanguage": "en-US"
+    },
+    {
       "@type": "SoftwareApplication",
       "@id": "https://kilbeans.me/#application",
-      "name": "Kilbeans App",
-      "operatingSystem": "ANDROID",
-      "applicationCategory": "SocialNetworkingApplication",
-      "description": "Unmanipulated feeds, encrypted private Sectors, and zero-compromise messaging for campus communities.",
+      "name": "Kilbeans",
+      "url": "https://kilbeans.me",
+      "operatingSystem": "Android, iOS, Web",
+      "applicationCategory": [
+        "SocialNetworkingApplication",
+        "UtilitiesApplication"
+      ],
+      "applicationSubCategory": "Campus micro-ISP utility",
+      "softwareVersion": "2.0",
+      "isAccessibleForFree": true,
+      "description": "Kilbeans is a localized campus ecosystem and ISP utility integrating encrypted messaging, chronological cohort feeds, and micro-ISP network controls.",
+      "author": { "@id": "https://kilbeans.me/gideonketer.html#person" },
+      "creator": { "@id": "https://kilbeans.me/gideonketer.html#person" },
       "publisher": { "@id": "https://kilbeans.me/#organization" },
+      "copyrightHolder": { "@id": "https://kilbeans.me/#organization" },
+      "brand": { "@id": "https://kilbeans.me/#brand" },
+      "featureList": [
+        "End-to-end encrypted messaging and private Sectors",
+        "Chronological, zero-drift campus feeds",
+        "Honeypot anti-scraper security",
+        "Local-first SQLite on-device storage",
+        "Micro-ISP hotspot and bandwidth controls",
+        "Privacy by design with zero ad trackers"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/OnlineOnly"
       }
     },
     {
       "@type": "Organization",
       "@id": "https://kilbeans.me/#organization",
+      "name": "Kilbeans Ltd",
+      "legalName": "Kilbeans Ltd",
+      "alternateName": "Kilbeans",
+      "url": "https://kilbeans.me/",
+      "slogan": "Human Logic. Digital Sovereign.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://kilbeans.me/assets/logo.png",
+        "caption": "Kilbeans logo"
+      },
+      "brand": { "@id": "https://kilbeans.me/#brand" },
+      "email": "support@kilbeans.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE"
+      },
+      "founder": { "@id": "https://kilbeans.me/gideonketer.html#person" },
+      "knowsAbout": [
+        "Campus social networking",
+        "Micro-ISP hotspot billing",
+        "Encrypted messaging",
+        "Bandwidth management",
+        "Local-first mobile applications"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "mailto:support@kilbeans.com",
+          "url": "https://kilbeans.me/support.html",
+          "availableLanguage": "en",
+          "areaServed": "Worldwide"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "press and partnerships",
+          "email": "mailto:hello@kilbeans.com",
+          "url": "https://kilbeans.me/contact.html",
+          "availableLanguage": "en",
+          "areaServed": "Worldwide"
+        }
+      ],
+      "owns": { "@id": "https://kilbeans.me/#application" }
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://kilbeans.me/#brand",
       "name": "Kilbeans",
       "url": "https://kilbeans.me/",
       "logo": "https://kilbeans.me/assets/logo.png",
-      "email": "support@kilbeans.com",
-      "founder": { "@id": "https://kilbeans.me/gideonketer.html#person" },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "email": "mailto:support@kilbeans.com",
-        "url": "https://kilbeans.me/support.html",
-        "availableLanguage": "en",
-        "areaServed": "Worldwide"
-      }
+      "description": "Kilbeans is the campus social ecosystem and micro-ISP utility owned and governed by Kilbeans Ltd."
     },
     {
       "@type": "Person",
       "@id": "https://kilbeans.me/gideonketer.html#person",
       "name": "Gideon Keter",
-      "jobTitle": "Lead Systems Engineer & Founder",
+      "jobTitle": "Founder & Lead Systems Architect",
       "url": "https://kilbeans.me/gideonketer.html",
+      "description": "Gideon Keter is the founder and lead systems architect of Kilbeans (Kilbeans Ltd), directing platform architecture, full-stack engineering, and micro-ISP network deployment.",
+      "email": "mailto:admin@kilbeans.com",
       "sameAs": [
+        "https://kilbeans.me/gideonketer.html",
         "https://www.linkedin.com/in/gideon-keter-8a1b2a320/"
       ],
-      "worksFor": { "@id": "https://kilbeans.me/#organization" }
+      "worksFor": { "@id": "https://kilbeans.me/#organization" },
+      "knowsAbout": [
+        "Distributed Systems Architecture",
+        "Full-Stack Web & Mobile Development",
+        "Micro-ISP Bandwidth Routing",
+        "React Native & Expo Pipelines",
+        "Node.js, Python, and Redis In-Memory Storage"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Systems Architect",
+        "occupationLocation": { "@type": "Country", "name": "Kenya" },
+        "skills": "Distributed systems architecture, cross-platform mobile engineering, ISP network routing, real-time cloud infrastructure"
+      }
     }
   ]
 }
@@ -1341,10 +1442,73 @@
   }
 
   /* === Performance: skip rendering of off-screen content until near the viewport === */
-  #about, #features, #contact, footer {
+  #about, #features, #ownership, #contact, footer {
     content-visibility: auto;
     contain-intrinsic-size: auto 1100px;
   }
+
+  /* === Entity / ownership content (branded-query landing content) === */
+  .ownership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin: 34px 0 6px;
+  }
+  .ownership-card {
+    padding: 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--stroke);
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .ownership-card:hover {
+    border-color: var(--stroke-hi);
+    transform: translateY(-3px);
+  }
+  .ownership-kicker {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .ownership-value {
+    font-size: 1.12rem;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    margin-bottom: 10px;
+  }
+  .ownership-card p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .ownership-card a { color: var(--accent-2); text-decoration: none; }
+  .ownership-card a:hover { color: var(--accent); text-decoration: underline; }
+
+  .ownership-sub {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    margin: 46px 0 16px;
+  }
+  .stack-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .stack-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 9px 15px;
+    border-radius: 100px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--stroke);
+    color: var(--text-dim);
+    font-size: 0.78rem;
+  }
+  .stack-chip strong { color: var(--text-main); font-weight: 700; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -1397,6 +1561,7 @@
 
   <div class="nav-links">
     <a href="/about.html" class="link-desktop">About</a>
+    <a href="#ownership" class="link-desktop">Ownership</a>
     <a href="#features" class="link-desktop">Technology</a>
     <a href="/contact.html" class="link-desktop">Contact</a>
     <a href="/support.html" class="cta">
@@ -1720,6 +1885,77 @@
   </div>
 </section>
 
+<section id="ownership" class="section" aria-labelledby="ownership-title">
+  <div class="section-label">Ownership &amp; Governance</div>
+  <h2 id="ownership-title" class="section-title">Who owns Kilbeans?</h2>
+  <p class="section-sub">
+    Kilbeans is an independent software platform and micro-ISP utility. It is developed, owned, and governed by
+    <strong>Kilbeans Ltd</strong> under the direction of founder <strong>Gideon Keter</strong>, Founder &amp; Lead Systems
+    Architect. The official platform lives at <strong>kilbeans.me</strong> and is not affiliated with, endorsed by, or
+    derived from any film, animation, game, or media property with a similar name.
+  </p>
+
+  <div class="ownership-grid">
+    <div class="ownership-card reveal">
+      <div class="ownership-kicker">Owner &amp; Operator</div>
+      <div class="ownership-value">Kilbeans Ltd</div>
+      <p>
+        Kilbeans Ltd is the technology entity that owns and operates the Kilbeans platform, its campus media
+        ecosystem, and its micro-ISP bandwidth controls. All Kilbeans intellectual property — client apps, backend
+        services, and network tooling — is held and governed by Kilbeans Ltd.
+      </p>
+    </div>
+
+    <div class="ownership-card reveal">
+      <div class="ownership-kicker">Founder &amp; Lead Systems Architect</div>
+      <div class="ownership-value">Gideon Keter</div>
+      <p>
+        Gideon Keter directs platform architecture, full-stack engineering, and ISP infrastructure deployment for
+        Kilbeans. <a href="/gideonketer.html">View the verified founder profile →</a>
+      </p>
+    </div>
+
+    <div class="ownership-card reveal">
+      <div class="ownership-kicker">Platform &amp; Build Status</div>
+      <div class="ownership-value">Kilbeans v2.0 · Closed testing</div>
+      <p>
+        Android-first build delivered through a React Native &amp; Expo EAS pipeline, currently in Google Play closed
+        testing with active campus telemetry. Web onboarding is live at
+        <a href="/join.html">kilbeans.me/join.html</a>. Deployment phases are documented on the
+        <a href="/about.html">platform architecture page</a>.
+      </p>
+    </div>
+
+    <div class="ownership-card reveal">
+      <div class="ownership-kicker">Official Domain &amp; Channels</div>
+      <div class="ownership-value">kilbeans.me</div>
+      <p>
+        Press, verification, and partnership requests: <a href="mailto:hello@kilbeans.com">hello@kilbeans.com</a>.
+        Support: <a href="mailto:support@kilbeans.com">support@kilbeans.com</a>. Only kilbeans.me and the Kilbeans
+        app are official brand properties.
+      </p>
+    </div>
+  </div>
+
+  <h3 class="ownership-sub">Technical architecture &amp; stack</h3>
+  <p class="section-sub">
+    Kilbeans is engineered end-to-end by Kilbeans Ltd: mobile clients, web surfaces, backend services, and the
+    physical network layer.
+  </p>
+  <div class="stack-grid">
+    <span class="stack-chip"><strong>Node.js</strong> API gateways &amp; billing services</span>
+    <span class="stack-chip"><strong>React.js</strong> web surfaces</span>
+    <span class="stack-chip"><strong>React Native</strong> + Expo EAS mobile pipeline</span>
+    <span class="stack-chip"><strong>Python</strong> automation &amp; network tooling</span>
+    <span class="stack-chip"><strong>Redis</strong> low-latency in-memory caching</span>
+    <span class="stack-chip"><strong>Firebase Firestore</strong> real-time data indexing</span>
+    <span class="stack-chip"><strong>MikroTik RouterOS</strong> hotspot &amp; bandwidth routing</span>
+    <span class="stack-chip"><strong>DigitalOcean Spaces</strong> object storage</span>
+    <span class="stack-chip"><strong>SQLite</strong> local-first on-device storage</span>
+    <span class="stack-chip"><strong>Nginx &amp; Cloudflare</strong> edge &amp; DNS</span>
+  </div>
+</section>
+
 <section id="contact" class="section" aria-labelledby="contact-title">
   <div class="section-label">Contact</div>
   <h2 id="contact-title" class="section-title">Talk to us. We actually reply.</h2>
@@ -1838,8 +2074,8 @@
       <ul>
         <li><a href="/support.html">Support</a></li>
         <li><a href="mailto:campus@kilbeans.com">Campus Reps</a></li>
-        <li><a href="#">Community</a></li>
-        <li><a href="#">Status</a></li>
+        <li><a href="/#ownership">Platform Status</a></li>
+        <li><a href="/gideonketer.html">Founder</a></li>
       </ul>
     </div>
   </div>
