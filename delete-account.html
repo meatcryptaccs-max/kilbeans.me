@@ -282,7 +282,7 @@
 </div>
 
 <script>
-    const API_BASE_URL = 'https://node-b49a.onrender.com';
+    const API_BASE_URL = 'https://api.kilbeans.me'; // current API host (was the retired node-b49a.onrender.com)
 
     const requestForm = document.getElementById('requestForm');
     const verifyForm = document.getElementById('verifyForm');
@@ -297,7 +297,7 @@
         btnRequest.classList.add('loading');
 
         try {
-            const response = await fetch(`${API_BASE_URL}/v1/auth/request-deletion`, {
+            const response = await fetch(`${API_BASE_URL}/api/v1/app/account/request-deletion`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email })
@@ -322,7 +322,7 @@
         btnVerify.classList.add('loading');
 
         try {
-            const response = await fetch(`${API_BASE_URL}/v1/auth/confirm-deletion`, {
+            const response = await fetch(`${API_BASE_URL}/api/v1/app/account/confirm-deletion`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, otp })
