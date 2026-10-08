@@ -1,0 +1,35 @@
+# Kilbeans
+
+> Kilbeans is a next-generation social network app built for real-time conversation, media sharing, short video feeds, and end-to-end encrypted messaging. Members post real-time updates, photos and short videos, share stories and highlights, chat privately with end-to-end encryption, and join specialized communities called Sectors. It is free to download on Google Play (Android package `com.kilbeans.app`) and usable on the web at https://kilbeans.me/. Kilbeans is owned and operated by Kilbeans Ltd and was founded and architected by Gideon Keter.
+
+Kilbeans is also commonly searched under these alternate names and misspellings: KilBeans, Killbeans, Kill beans, Kil beans, Beans social, Kilbean, Killbean, Keelbeans, Kielbeans, Kilbeens, Killbeens, Kilbene, Kilbenes, Kilbanes, Kilbans.
+
+## Download
+
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.kilbeans.app): Kilbeans for Android — production release, free to download
+- [Reserve a username (web onboarding)](https://kilbeans.me/join.html): sign up on the web before installing the app
+
+## Key pages
+
+- [Home](https://kilbeans.me/): official Kilbeans landing page — features, FAQ, ownership, and contact
+- [About](https://kilbeans.me/about.html): platform architecture, engineering stack, and deployment phases
+- [Founder profile — Gideon Keter](https://kilbeans.me/gideonketer.html): verified founder and lead systems architect
+- [Support](https://kilbeans.me/support.html): help center and contact for account issues
+- [Contact](https://kilbeans.me/contact.html): press, partnerships, and general enquiries
+
+## Feature summary
+
+- Home Feed: real-time posts, photos, short videos, and rich media from people, creators, and topics you follow
+- Stories & Status: fleeting daily moments and short updates; Highlights pin your best content permanently
+- Sectors: communities for University & Campus Life, Politics & Public Affairs, Trading/Finance/Crypto, Sports & Gaming, and Science/Tech/Innovation
+- Messaging: end-to-end encrypted direct messages, group chats, voice notes, and fast media transfer
+- Explore: viral posts, trending hashtags, short videos, top creators, and smart search across posts, accounts, and Sectors
+- Creator Rewards: earn through verified platform participation and monetize high-value content
+
+## Optional
+
+- [Privacy Policy](https://kilbeans.me/privacy.html): data handling, encryption, and user rights
+- [Terms of Service](https://kilbeans.me/terms.html): platform terms
+- [Child Safety](https://kilbeans.me/childsafety.html): child safety and age-appropriate experience policy
+- [Delete Account](https://kilbeans.me/delete-account.html): account deletion instructions
+- [Legal](https://kilbeans.me/legal.html): legal notices and disclosures
